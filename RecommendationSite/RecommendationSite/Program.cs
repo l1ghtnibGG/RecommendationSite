@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using RecommendationSite.Models;
+using RecommendationSite.Models.Data;
+using RecommendationSite.Models.Repo;
+
 namespace RecommendationSite
 {
     public class Program
@@ -6,16 +11,21 @@ namespace RecommendationSite
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            var connectionString = builder.Configuration.GetConnectionString("ReviewsAppConnection");
+
+            builder.Services.AddDbContext<RecommendationDbContext>(opt => opt.UseSqlServer(connectionString));
+
+            builder.Services.AddScoped<IRecommendationRepository<User>, EFUserRepository>();
+            builder.Services.AddScoped<IRecommendationRepository<Review>, EFReviewRepository>();
+            builder.Services.AddScoped<IRecommendationRepository<Tag>, EFTagRepository>();  
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -29,6 +39,8 @@ namespace RecommendationSite
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            //SeedData.EnsureData(app);
 
             app.Run();
         }

@@ -1,8 +1,17 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model IQueryable<User>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h2>It's Vladislav WebSite</h2>
+
+    @foreach (var user in Model){
+        <div>
+        <h3>@user.Name</h3>
+        @user.Id
+        @user.Status
+        </div>
+        }
 </div>
