@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace RecommendationSite.Models
 {
-    public class RecommendationDbContext : DbContext
+    public class RecommendationDbContext : IdentityDbContext
     {
         public RecommendationDbContext(DbContextOptions<RecommendationDbContext> options) :
             base(options)

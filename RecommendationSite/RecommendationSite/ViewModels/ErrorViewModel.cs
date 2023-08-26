@@ -1,4 +1,4 @@
-namespace RecommendationSite.Models
+namespace RecommendationSite.ViewModels
 {
     public class ErrorViewModel
     {

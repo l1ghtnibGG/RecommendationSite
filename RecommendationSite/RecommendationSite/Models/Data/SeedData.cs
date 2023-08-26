@@ -139,7 +139,7 @@ namespace RecommendationSite.Models.Data
                         "somehow. Nonetheless, both shows are amazing, but Naruto " +
                         "takes the cake as my all-time favorite series.",
                         ImageUrl = "~/wwwroot/Images/Naruto.jpg",
-                        UserId = Guid.Parse("658DEE78-FF3F-471C-52DC-08DBA4B3E157"),
+                        UserId = Guid.Parse("88A01264-2998-4FC8-B30E-08DBA6563D63"),
                         Mark = 10
                     },
                     new Review
@@ -179,7 +179,7 @@ namespace RecommendationSite.Models.Data
                         "an Oscar and every actor and actress deserve one as well. I loved it. So, " +
                         "by order of the Peaky Blinders, go watch the show everybody. Enjoy!",
                         ImageUrl = "~/wwwroot/Images/PeakyBlinders.jpg",
-                        UserId = Guid.Parse("9A1DB068-B3D1-4420-52DD-08DBA4B3E157"),
+                        UserId = Guid.Parse("5E6D865C-EB0E-4D8D-B312-08DBA6563D63"),
                         Mark = 9
                     },
                     new Review
@@ -225,7 +225,7 @@ namespace RecommendationSite.Models.Data
                         "trategy, and the pursuit of excellence in all endeavors. By embracing Sun Tzu’s teachings, w" +
                         "e can become better leaders, decision-makers, and ultimately, better human beings.",
                         ImageUrl = "~/wwwroot/Images/TheArtOfWar.jpg",
-                        UserId = Guid.Parse("DAE8CAA0-E4D2-4B46-52DE-08DBA4B3E157"),
+                        UserId = Guid.Parse("3140773D-2172-419C-B30F-08DBA6563D63"),
                         Mark = 6,
                     },
                     new Review
@@ -243,7 +243,7 @@ namespace RecommendationSite.Models.Data
                         "household name for gamers. At the end of each multiplayer session and campaign replay, I still" +
                         " warmed up to the idea of Infinity Ward channelling their old habits for better or worse.",
                         ImageUrl = "~/wwwroot/Images/COD.jpg",
-                        UserId = Guid.Parse("658DEE78-FF3F-471C-52DC-08DBA4B3E157"),
+                        UserId = Guid.Parse("88A01264-2998-4FC8-B30E-08DBA6563D63"),
                         Mark = 10
                     }
                 );

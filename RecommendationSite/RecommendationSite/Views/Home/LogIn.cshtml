@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "LogIn";
+}
+@model LogIn;
+
+<div class="container mt-5 g-0">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-sm-12 col-md-8 col-lg-5 rounded p-5 shadow-lg">
+            <h1 class="mb-3 text-center">Log in</h1>
+            <form method="post" asp-controller="Home" asp-action="LogIn">
+                <div class="mb-3">
+                    <label class="form-label" asp-for="@Model.EmailAddress">Email adress</label>
+                    <input type="email" asp-for="@Model.EmailAddress" class="form-control" />
+                    <span asp-validation-for="@Model.EmailAddress" class="text-danger"></span>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" asp-for="@Model.Password">Password</label>
+                    <input type="password" asp-for="@Model.Password" class="form-control" />
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3 text-center">
+                    <button type="submit" class="btn btn-outline-primary w-50 p-2 fs-5">LogIn</button>
+                </div>
+            </form>
+            <form method="get" asp-controller="Home" asp-action="Registration">
+                <div class="mt-4 text-center">
+                <button class="btn btn-outline-dark">Registration</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

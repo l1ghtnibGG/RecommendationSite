@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RecommendationSite.Models;
 using RecommendationSite.Models.Repo;
+using RecommendationSite.ViewModels;
 using System.Diagnostics;
 
 namespace RecommendationSite.Controllers
@@ -20,6 +22,26 @@ namespace RecommendationSite.Controllers
         {
             return View(_userRepository.GetValues);
         }
+
+        [HttpGet]
+        public IActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Registration([FromForm] Registration user)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View(user);
+        }
+
+        [HttpGet]
+        public IActionResult LogIn() => View();
 
         public IActionResult Privacy()
         {
