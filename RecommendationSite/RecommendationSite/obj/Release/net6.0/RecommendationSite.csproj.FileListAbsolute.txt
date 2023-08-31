@@ -61,3 +61,8 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\RecommendationSite.csproj.CopyComplete
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Microsoft.Extensions.Identity.Core.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Microsoft.Extensions.Identity.Stores.dll

@@ -10,6 +10,11 @@
 
         IQueryable<Review> IRecommendationRepository<Review>.GetValues => _context.Reviews;
 
+        public User? Authenticate(UserLogIn user)
+        {
+            throw new NotImplementedException();
+        }
+
         public Review GetItem(Guid id)
         {
             throw new NotImplementedException();

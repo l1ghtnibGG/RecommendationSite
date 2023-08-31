@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Admin";
+}
+
+@model User;
+
+<h2>Hi Admin, @Model.Name, @Model.Email</h2>
+
+<form asp-controller="Home" asp-action="LogOut">
+    <button type="submit" class="btn btn-danger">LogOut</button>
+</form>

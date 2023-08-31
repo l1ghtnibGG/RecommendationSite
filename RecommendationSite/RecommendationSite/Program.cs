@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using RecommendationSite.Models;
 using RecommendationSite.Models.Data;
 using RecommendationSite.Models.Repo;
@@ -16,11 +18,18 @@ namespace RecommendationSite
 
             builder.Services.AddDbContext<RecommendationDbContext>(opt => opt.UseSqlServer(connectionString));
 
-            builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<RecommendationDbContext>();
-
             builder.Services.AddScoped<IRecommendationRepository<User>, EFUserRepository>();
             builder.Services.AddScoped<IRecommendationRepository<Review>, EFReviewRepository>();
-            builder.Services.AddScoped<IRecommendationRepository<Tag>, EFTagRepository>();  
+            builder.Services.AddScoped<IRecommendationRepository<Tag>, EFTagRepository>();
+
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                    options.LoginPath = "/Home/LogIn";
+                    options.LogoutPath = "/Home/LogOut";
+                    options.AccessDeniedPath = "/Home/Error";
+                    options.ReturnUrlParameter = "ReturnUrl";
+                });
 
             builder.Services.AddControllersWithViews();
 
@@ -37,21 +46,15 @@ namespace RecommendationSite
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute("registration",
-                    "Registration",
-                    new { controller = "Home", action = "Registration" });
-                endpoints.MapControllerRoute("logIn",
-                    "LogIn",
-                    new { controller = "Home", action = "LogIn" });
                 endpoints.MapControllerRoute("default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             });
                 
-
             SeedData.EnsureData(app);
 
             app.Run();

@@ -11,6 +11,11 @@
 
         public IQueryable<Tag> GetValues => _context.Tags;
 
+        public User Authenticate(UserLogIn user)
+        {
+            throw new NotImplementedException();
+        }
+
         public Tag GetItem(Guid id)
         {
             throw new NotImplementedException();

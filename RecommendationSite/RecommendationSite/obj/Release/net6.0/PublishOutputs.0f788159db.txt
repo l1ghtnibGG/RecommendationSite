@@ -4,6 +4,9 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.runtimeconfig.json
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.pdb
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -11,6 +14,8 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Identity.Client.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll

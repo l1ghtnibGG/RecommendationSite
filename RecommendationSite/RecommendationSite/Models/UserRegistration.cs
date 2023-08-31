@@ -2,7 +2,7 @@
 
 namespace RecommendationSite.Models
 {
-    public class LogIn
+    public class UserRegistration
     {
         [Required]
         [DataType(DataType.EmailAddress)]
@@ -11,5 +11,10 @@ namespace RecommendationSite.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Compare(nameof(Password), ErrorMessage = "Password and Confirm password didn't match")]
+        public string ConfirmPassword { get; set; }
     }
 }

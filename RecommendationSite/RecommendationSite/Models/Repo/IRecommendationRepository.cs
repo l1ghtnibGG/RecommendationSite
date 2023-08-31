@@ -7,5 +7,7 @@
         public T GetItem(Guid id);
 
         public void Save();
+
+        public User? Authenticate(UserLogIn user);
     }
 }

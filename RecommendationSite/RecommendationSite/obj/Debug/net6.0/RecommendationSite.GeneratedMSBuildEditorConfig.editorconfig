@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/InternItransition/CourseProject/RecommendationSite/RecommendationSite/Views/Home/AdminPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZG1pblBhbmVsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/InternItransition/CourseProject/RecommendationSite/RecommendationSite/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -29,6 +33,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [E:/InternItransition/CourseProject/RecommendationSite/RecommendationSite/Views/Home/Registration.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxSZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/InternItransition/CourseProject/RecommendationSite/RecommendationSite/Views/Home/UserPanel.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyUGFuZWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/InternItransition/CourseProject/RecommendationSite/RecommendationSite/Views/Shared/Error.cshtml]
