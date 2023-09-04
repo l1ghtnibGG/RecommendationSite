@@ -10,6 +10,11 @@
 
         IQueryable<Review> IRecommendationRepository<Review>.GetValues => _context.Reviews;
 
+        public string Add(UserRegistration user)
+        {
+            throw new NotImplementedException();
+        }
+
         public User? Authenticate(UserLogIn user)
         {
             throw new NotImplementedException();

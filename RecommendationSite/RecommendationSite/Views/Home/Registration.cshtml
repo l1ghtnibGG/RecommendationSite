@@ -5,7 +5,7 @@
 
 <div class="container mt-5 g-0">
     <div class="row justify-content-center align-items-center">
-        <div class="col-sm-12 col-md-12 col-lg-5 rounded p-5 shadow-lg">
+        <div class="col-sm-12 col-md-12 col-lg-6 rounded p-5 shadow-lg">
             <h1 class="mb-3 text-center">Registration</h1>
             <form method="post" asp-controller="Home" asp-action="Registration">
                 <div class="mb-3">
@@ -14,12 +14,17 @@
                     <span asp-validation-for="@Model.EmailAddress" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label" asp-for="@Model.Name">Name</label>
+                    <input type="text" asp-for="@Model.Name" class="form-control" />
+                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
                     <label class="form-label" asp-for="@Model.Password">Password</label>
                     <input type="password" asp-for="@Model.Password" class="form-control" />
                     <span asp-validation-for="@Model.Password" class="text-danger"></span>
                 </div>
                 <div class="mb-4">
-                    <label class="form-label" asp-for="@Model.ConfirmPassword">Email adress</label>
+                    <label class="form-label" asp-for="@Model.ConfirmPassword">Confirm password</label>
                     <input type="password" asp-for="@Model.ConfirmPassword" class="form-control" />
                     <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
                 </div>
@@ -28,5 +33,6 @@
                 </div>
             </form>
         </div>
+        @await Html.PartialAsync("_PartialSignInBySocial")
     </div>
 </div>

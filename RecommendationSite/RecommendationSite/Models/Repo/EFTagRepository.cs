@@ -11,6 +11,11 @@
 
         public IQueryable<Tag> GetValues => _context.Tags;
 
+        public string Add(UserRegistration user)
+        {
+            throw new NotImplementedException();
+        }
+
         public User Authenticate(UserLogIn user)
         {
             throw new NotImplementedException();

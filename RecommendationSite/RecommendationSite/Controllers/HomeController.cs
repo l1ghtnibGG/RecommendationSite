@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
@@ -40,7 +43,14 @@ namespace RecommendationSite.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (_userRepository.GetValues.FirstOrDefault(x => x.Email == user.EmailAddress) == null)
+                {
+                    _userRepository.Add(user);
 
+                    return RedirectToAction("UserPanel");
+                }
+
+                return RedirectToAction("Error", new { message = "User already exist. Try again or log in." });
             }
 
             return View(user);
@@ -78,6 +88,49 @@ namespace RecommendationSite.Controllers
             return View("LogIn", userLogin);
         }
 
+        public async Task SignInFacebook()
+        {
+            await HttpContext.ChallengeAsync(FacebookDefaults.AuthenticationScheme, new AuthenticationProperties()
+            {
+                RedirectUri = Url.Action("signin-facebook")
+            });
+        }
+
+        public async Task SignInGoogle()
+        {
+            string returnUrl = HttpContext.Request.Query["ReturnUrl"];
+
+            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
+            {
+                RedirectUri = Url.Action("SignInFa")
+            });
+        }
+
+        public async Task SignInMicrosoft()
+        {
+            string returnUrl = HttpContext.Request.Query["ReturnUrl"];
+
+            await HttpContext.ChallengeAsync(MicrosoftAccountDefaults.AuthenticationScheme, new AuthenticationProperties()
+            {
+                RedirectUri = Url.Action("SignInFa")
+            });
+        }
+
+        public async Task<IActionResult> SignInFa()
+        {
+            var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
+            var claims = result.Principal.Identities
+                    .FirstOrDefault().Claims.Select(claim => new
+                    {
+                        claim.Issuer,
+                        claim.OriginalIssuer,
+                        claim.Type,
+                        claim.Value
+                    });
+            return Json(claims);
+        }
+
         [HttpPost]
         public async Task<IActionResult> LogOut()
         {
@@ -88,6 +141,7 @@ namespace RecommendationSite.Controllers
 
         [Authorize(Roles = "User")]
         [HttpGet("UserPanel/{Id}")]
+        [HttpGet("Home/UserPanel/{Id}")]
         public IActionResult UserPanel(Guid Id)
         {
             var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);

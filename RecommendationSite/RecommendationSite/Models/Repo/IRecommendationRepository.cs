@@ -9,5 +9,7 @@
         public void Save();
 
         public User? Authenticate(UserLogIn user);
+
+        public string Add(UserRegistration user);
     }
 }

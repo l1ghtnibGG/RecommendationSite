@@ -5,7 +5,7 @@
 
 <div class="container mt-5 g-0">
     <div class="row justify-content-center align-items-center">
-        <div class="col-sm-12 col-md-8 col-lg-5 rounded p-5 shadow-lg">
+        <div class="col-sm-12 col-md-8 col-lg-6 rounded p-5 shadow-lg">
             <h1 class="mb-3 text-center">Log in</h1>
             <form method="post" asp-controller="Home" asp-action="LogIn">
                 <div class="mb-3">
@@ -19,14 +19,15 @@
                     <span asp-validation-for="@Model.Password" class="text-danger"></span>
                 </div>
                 <div class="mb-3 text-center">
-                    <button type="submit" class="btn btn-outline-primary w-50 p-2 fs-5">LogIn</button>
+                    <button type="submit" class="btn btn-outline-primary w-50 p-2 fs-5">Log in</button>
                 </div>
             </form>
             <form method="get" asp-controller="Home" asp-action="Registration">
                 <div class="mt-4 text-center">
-                <button class="btn btn-outline-dark">Registration</button>
+                    <button class="btn btn-lg btn-outline-dark w-50 p-2 fs-5">Registration</button>
                 </div>
             </form>
         </div>
+        @await Html.PartialAsync("_PartialSignInBySocial")
     </div>
 </div>

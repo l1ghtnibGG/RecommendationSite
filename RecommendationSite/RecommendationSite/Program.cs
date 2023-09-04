@@ -1,4 +1,7 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Facebook;
+using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -22,13 +25,34 @@ namespace RecommendationSite
             builder.Services.AddScoped<IRecommendationRepository<Review>, EFReviewRepository>();
             builder.Services.AddScoped<IRecommendationRepository<Tag>, EFTagRepository>();
 
-            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            builder.Services.AddAuthentication(options =>
+                {
+                    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = MicrosoftAccountDefaults.AuthenticationScheme;
+                })
                 .AddCookie(options =>
                 {
                     options.LoginPath = "/Home/LogIn";
                     options.LogoutPath = "/Home/LogOut";
                     options.AccessDeniedPath = "/Home/Error";
                     options.ReturnUrlParameter = "ReturnUrl";
+                })
+                .AddFacebook(facebookOpt =>
+                {
+                    facebookOpt.AppId = builder.Configuration["Authentication:Facebook:AppId"];
+                    facebookOpt.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+                })
+                .AddGoogle(googleOpt =>
+                {
+                    googleOpt.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+                    googleOpt.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+                })
+                .AddMicrosoftAccount(microsoftOpt =>
+                {
+                    microsoftOpt.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
+                    microsoftOpt.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
                 });
 
             builder.Services.AddControllersWithViews();
@@ -54,7 +78,7 @@ namespace RecommendationSite
                 endpoints.MapControllerRoute("default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             });
-                
+
             SeedData.EnsureData(app);
 
             app.Run();
