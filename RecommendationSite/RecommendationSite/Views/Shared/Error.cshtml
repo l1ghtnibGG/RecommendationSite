@@ -4,13 +4,17 @@
 
 @model string
 
-<div class="container-fluid mt-5">
+<div class="container mt-5 g-0">
+    <div class="row justify-content-center align-items-center">
     <h1 class="text-center">@Model</h1>
     <form method="get" asp-controller="Home" asp-action="Registration">
-        <div class="mt-4 text-center">
+        <div class="mt-4 mb-2 text-center">
             <button class="btn btn-outline-dark fs-3">Registration</button>
         </div>
     </form>
+        @await Html.PartialAsync("_PartialSignInBySocial")
+    </div>
 </div>
+
 
 

@@ -35,12 +35,7 @@
            var user = _context.Users.FirstOrDefault(x => x.Email == userLogin.EmailAddress &&
                x.Password == userLogin.Password);
 
-           if (user != null)
-           {
-               return user;
-           }
-
-           return null;
+           return user ?? null;
         }
 
         public User GetItem(Guid id)

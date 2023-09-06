@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Identity;
@@ -16,7 +15,7 @@ namespace RecommendationSite
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            
             var connectionString = builder.Configuration.GetConnectionString("ReviewsAppConnection");
 
             builder.Services.AddDbContext<RecommendationDbContext>(opt => opt.UseSqlServer(connectionString));
@@ -28,7 +27,6 @@ namespace RecommendationSite
             builder.Services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = FacebookDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = MicrosoftAccountDefaults.AuthenticationScheme;
                 })
@@ -38,11 +36,6 @@ namespace RecommendationSite
                     options.LogoutPath = "/Home/LogOut";
                     options.AccessDeniedPath = "/Home/Error";
                     options.ReturnUrlParameter = "ReturnUrl";
-                })
-                .AddFacebook(facebookOpt =>
-                {
-                    facebookOpt.AppId = builder.Configuration["Authentication:Facebook:AppId"];
-                    facebookOpt.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
                 })
                 .AddGoogle(googleOpt =>
                 {

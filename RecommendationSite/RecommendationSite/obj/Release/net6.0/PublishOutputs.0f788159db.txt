@@ -4,6 +4,8 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.runtimeconfig.json
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.pdb
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.Google.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -13,9 +15,18 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Caching.Memory.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Configuration.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Configuration.FileExtensions.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Configuration.Json.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Configuration.UserSecrets.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Abstractions.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.FileProviders.Physical.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.FileSystemGlobbing.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Identity.Core.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Identity.Stores.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Primitives.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Identity.Client.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.JsonWebTokens.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Logging.dll
@@ -28,8 +39,11 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Drawing.Common.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Runtime.Caching.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Runtime.CompilerServices.Unsafe.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Security.Permissions.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Text.Encodings.Web.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Text.Json.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Windows.Extensions.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
@@ -42,5 +56,6 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.deps.json

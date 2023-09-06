@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.Facebook;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
@@ -74,12 +73,7 @@ namespace RecommendationSite.Controllers
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-                    if (user.Status.ToString() == "Admin")
-                    {
-                        return RedirectToAction("AdminPanel", new { Id = user.Id });
-                    }
-
-                    return RedirectToAction("UserPanel", new {Id = user.Id});
+                    return RedirectToAction(user.Status.ToString() == "Admin" ? "AdminPanel" : "UserPanel", new { user.Id });
                 }
 
                 return RedirectToAction("Error", new { message = "Wrong email or password. Try again or registrate."});
@@ -88,47 +82,37 @@ namespace RecommendationSite.Controllers
             return View("LogIn", userLogin);
         }
 
-        public async Task SignInFacebook()
-        {
-            await HttpContext.ChallengeAsync(FacebookDefaults.AuthenticationScheme, new AuthenticationProperties()
-            {
-                RedirectUri = Url.Action("signin-facebook")
-            });
-        }
-
         public async Task SignInGoogle()
         {
-            string returnUrl = HttpContext.Request.Query["ReturnUrl"];
-
             await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
             {
-                RedirectUri = Url.Action("SignInFa")
+                RedirectUri = Url.Action("SignInBySocial")
             });
         }
 
         public async Task SignInMicrosoft()
         {
-            string returnUrl = HttpContext.Request.Query["ReturnUrl"];
-
             await HttpContext.ChallengeAsync(MicrosoftAccountDefaults.AuthenticationScheme, new AuthenticationProperties()
             {
-                RedirectUri = Url.Action("SignInFa")
+                RedirectUri = Url.Action("SignInBySocial")
             });
         }
 
-        public async Task<IActionResult> SignInFa()
+        public async Task<IActionResult> SignInBySocial()
         {
             var result = await HttpContext.AuthenticateAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
             var claims = result.Principal.Identities
-                    .FirstOrDefault().Claims.Select(claim => new
+                    .First().Claims.Select(claim => new
                     {
-                        claim.Issuer,
-                        claim.OriginalIssuer,
                         claim.Type,
                         claim.Value
                     });
-            return Json(claims);
+            
+            var id = claims.First().Value;
+            var email = claims.Last().Value;
+
+            return RedirectToAction("UserPanel", new {Id = id, Email = email});
         }
 
         [HttpPost]
@@ -139,9 +123,22 @@ namespace RecommendationSite.Controllers
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(AuthenticationSchemes = GoogleDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = MicrosoftAccountDefaults.AuthenticationScheme)]
         [HttpGet("UserPanel/{Id}")]
-        [HttpGet("Home/UserPanel/{Id}")]
+        public IActionResult UserPanel(string Id, string Email)
+        {
+            var user = new User()
+            {
+                Email = Email,
+                Status = Models.User.StatusType.User
+            };
+            
+            return View(user);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpGet("UserPanel/{Id:guid}")]
         public IActionResult UserPanel(Guid Id)
         {
             var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);
@@ -151,7 +148,7 @@ namespace RecommendationSite.Controllers
 
         
         [Authorize(Roles = "Admin")]
-        [HttpGet("AdminPanel/{Id}")]
+        [HttpGet("AdminPanel/{Id:guid}")]
         public IActionResult AdminPanel(Guid Id)
         {
             var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);
@@ -169,9 +166,35 @@ namespace RecommendationSite.Controllers
 
         public List<Claim> GetClaims(User user) => new()
         {
-            new Claim(ClaimTypes.Email, user.Email),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.Role, user.Status.ToString()),
             new Claim(ClaimTypes.Name, user.Name),
-            new Claim(ClaimTypes.Role, user.Status.ToString())
+            new Claim(ClaimTypes.Email, user.Email)
         };
+
+        public IActionResult CheckRole()
+        {
+            if (User.Identity.AuthenticationType != "Cookies")
+            {
+                var id = User.Claims.First().Value;
+                var email = User.Claims.Last().Value;
+
+                return RedirectToAction("UserPanel", new { Id = id, Email = email });
+            }
+            
+            return SelectPanel();
+        }
+
+        public IActionResult SelectPanel()
+        {
+            var id = User.Claims.First().Value;
+            
+            if (User.Claims.Skip(1).First().Value == "Admin")
+            {
+                return RedirectToAction("AdminPanel", new { Id = id});
+            }
+
+            return RedirectToAction("UserPanel", new { id });
+        }
     }
 }

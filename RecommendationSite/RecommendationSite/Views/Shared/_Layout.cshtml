@@ -32,10 +32,27 @@
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                     <div class="d-none d-sm-block vr me-1"></div>
-                    
-                    <div class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="LogIn">Log in</a>
-                    </div>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+                        <div class="nav-item">
+                            <form method="get" asp-controller="Home" asp-action="LogIn">
+                                <button type="submit" class="btn nav-link text-dark">Log in</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="nav-item">
+                            <form asp-controller="Home" asp-action="CheckRole">
+                            <button type="submit" class="btn nav-link text-dark">@User.Claims.Last().Value</button>
+                            </form>
+                        </div>
+                        <div class="nav-item">
+                            <form asp-controller="Home" asp-action="LogOut">
+                                <button type="submit" class="btn nav-link text-dark">Log out</button>
+                            </form>
+                        </div>
+                    }
                 </div>
             </div>
         </nav>
