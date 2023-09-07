@@ -61,25 +61,16 @@ namespace RecommendationSite.Controllers
         [HttpPost("LogIn")]
         public async Task<IActionResult> LogIn([FromForm]UserLogIn userLogin)
         {
-            if (ModelState.IsValid)
-            {
-                var user = _userRepository.Authenticate(userLogin);
+            if (!ModelState.IsValid) 
+                return View("LogIn", userLogin);
+            
+            var user = _userRepository.Authenticate(userLogin);
 
-                if (user != null)
-                {
-                    var claims = GetClaims(user);
-
-                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-
-                    return RedirectToAction(user.Status.ToString() == "Admin" ? "AdminPanel" : "UserPanel", new { user.Id });
-                }
-
-                return RedirectToAction("Error", new { message = "Wrong email or password. Try again or registrate."});
-            }
-
-            return View("LogIn", userLogin);
+            if (user == null)
+                return RedirectToAction("Error", new { message = "Wrong email or password. Try again or register." });
+            
+            await UserSingIn(user);
+            return RedirectToAction(user.Status.ToString() == "Admin" ? "AdminPanel" : "UserPanel", new { user.Id });
         }
 
         public async Task SignInGoogle()
@@ -137,7 +128,7 @@ namespace RecommendationSite.Controllers
             return View(user);
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize]
         [HttpGet("UserPanel/{Id:guid}")]
         public IActionResult UserPanel(Guid Id)
         {
@@ -152,8 +143,9 @@ namespace RecommendationSite.Controllers
         public IActionResult AdminPanel(Guid Id)
         {
             var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);
+            var users = _userRepository.GetValues.Where(x => x.Status == Models.User.StatusType.User);
 
-            return View(user);
+            return View(users);
         }
 
         [HttpGet("Privacy")]
@@ -189,12 +181,39 @@ namespace RecommendationSite.Controllers
         {
             var id = User.Claims.First().Value;
             
-            if (User.Claims.Skip(1).First().Value == "Admin")
-            {
-                return RedirectToAction("AdminPanel", new { Id = id});
-            }
+            return User.Claims.Skip(1).First().Value == "Admin" ? RedirectToAction("AdminPanel", new { Id = id}) 
+                : RedirectToAction("UserPanel", new { id });
+        }
 
-            return RedirectToAction("UserPanel", new { id });
+        public async Task UserSingIn(User user)
+        {
+            var claims = GetClaims(user);
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+        }
+
+        public async Task<IActionResult> SearchUser(string Id)
+        {
+            try
+            {
+                var id = Guid.Parse(Id);
+                var user = _userRepository.GetValues.First(x => x.Id == id);
+                await UserSingIn(user);
+                
+                return RedirectToAction("UserPanel", new {user.Id});
+            }
+            catch (ArgumentNullException ex)
+            {
+                _logger.Log(LogLevel.Critical, ex.Message, this);
+                return RedirectToAction("Error", new { message = "Something went wrong" });
+            }
+            catch (FormatException ex)
+            {
+                _logger.Log(LogLevel.Critical, ex.Message, this);
+                return RedirectToAction("Error", new {  message = "Something went wrong" });
+            }
         }
     }
 }

@@ -2,6 +2,33 @@
     ViewData["Title"] = "Admin";
 }
 
-@model User;
+@model IQueryable<User>;
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark fs-4">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Email</th>
+        <th>Name</th>
+        <th>Page</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in @Model)
+    {
+        <tr>
+            <td>@user.Id</td>
+            <td>@user.Email</td>
+            <td>@user.Name</td>
+            <td>
+                <form asp-controller="Home" asp-action="SearchUser">
+                    <input type="hidden" name="Id" value="@user.Id.ToString()"/>
+                    <button type="submit" class="btn">user panel</button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
 
 
