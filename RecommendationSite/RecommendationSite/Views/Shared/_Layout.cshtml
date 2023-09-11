@@ -14,9 +14,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RecommendationSite</a>
+                <a class="navbar-brand text-white fw-bolder" asp-area="" asp-controller="Home" asp-action="Index">Recommendation</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,19 +24,19 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between g-0">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white fw-normal" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                     </ul>
                     <form class="d-flex me-5">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn btn-beige" type="submit">Search</button>
                     </form>
-                    <div class="d-none d-sm-block vr me-1"></div>
+                    <div class="d-none d-sm-block vr me-1 text-white"></div>
                     @if (!User.Identity.IsAuthenticated)
                     {
                         <div class="nav-item">
                             <form method="get" asp-controller="Home" asp-action="LogIn">
-                                <button type="submit" class="btn nav-link text-dark">Log in</button>
+                                <button type="submit" class="btn nav-link text-white">Log in</button>
                             </form>
                         </div>
                     }
@@ -44,12 +44,12 @@
                     {
                         <div class="nav-item">
                             <form asp-controller="Home" asp-action="CheckRole">
-                            <button type="submit" class="btn nav-link text-dark">@User.Claims.Last().Value</button>
+                                <button type="submit" class="btn nav-link text-white">@User.Claims.Last().Value</button>
                             </form>
                         </div>
                         <div class="nav-item">
                             <form asp-controller="Home" asp-action="LogOut">
-                                <button type="submit" class="btn nav-link text-dark">Log out</button>
+                                <button type="submit" class="btn nav-link text-white">Log out</button>
                             </form>
                         </div>
                     }
@@ -63,9 +63,9 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer bg-dark text-white">
         <div class="container">
-            &copy; 2023 - Kruglikov Vlad - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - Kruglikov Vlad
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

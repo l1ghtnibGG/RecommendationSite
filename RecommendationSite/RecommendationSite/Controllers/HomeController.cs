@@ -17,11 +17,14 @@ namespace RecommendationSite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IRecommendationRepository<User> _userRepository;
+        private readonly IRecommendationRepository<Review> _reviewRepository;
 
-        public HomeController(ILogger<HomeController> logger, IRecommendationRepository<User> userRepository)
+        public HomeController(ILogger<HomeController> logger, IRecommendationRepository<User> userRepository,
+            IRecommendationRepository<Review> reviewRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
+            _reviewRepository = reviewRepository;
         }
 
         [HttpGet("")]
@@ -32,10 +35,8 @@ namespace RecommendationSite.Controllers
         }
 
         [HttpGet("Registration")]
-        public IActionResult Registration()
-        {
-            return View();
-        }
+        public IActionResult Registration() => View();
+        
 
         [HttpPost("Registration")]
         public IActionResult Registration([FromForm] UserRegistration user)
@@ -125,16 +126,18 @@ namespace RecommendationSite.Controllers
                 Status = Models.User.StatusType.User
             };
             
-            return View(user);
+            return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "User")]
         [HttpGet("UserPanel/{Id:guid}")]
         public IActionResult UserPanel(Guid Id)
         {
             var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);
 
-            return View(user);
+            var userReviews = _reviewRepository.GetValues.Where(x => x.UserId == Id);
+
+            return View(userReviews);
         }
 
         

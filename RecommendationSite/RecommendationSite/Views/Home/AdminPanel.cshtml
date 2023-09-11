@@ -5,12 +5,12 @@
 @model IQueryable<User>;
 
 <table class="table table-bordered table-hover">
-    <thead class="table-dark fs-4">
+    <thead class="bg-beige text-white fs-4">
     <tr>
-        <th scope="col">#</th>
+        <th scope="col">Id</th>
         <th scope="col">Email</th>
-        <th>Name</th>
-        <th>Page</th>
+        <th scope="col">Name</th>
+        <th scope="col">Page</th>
     </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
             <td>
                 <form asp-controller="Home" asp-action="SearchUser">
                     <input type="hidden" name="Id" value="@user.Id.ToString()"/>
-                    <button type="submit" class="btn">user panel</button>
+                    <button type="submit" class="btn btn-link">@user.Email page</button>
                 </form>
             </td>
         </tr>

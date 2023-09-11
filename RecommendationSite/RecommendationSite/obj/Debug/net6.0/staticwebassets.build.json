@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "N93r+YAengLhzsjuS1gJk5ujTT3TJUo6oXgoonD+HCc=",
+  "Hash": "KsRBKe8TA/SjRNF6Ib5Wd4qUbcP6q+uB7z5ir1jnjDU=",
   "Source": "RecommendationSite",
   "BasePath": "_content/RecommendationSite",
   "Mode": "Default",
@@ -151,6 +151,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\googleLogo.png"
+    },
+    {
+      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\iconStar.png",
+      "SourceId": "RecommendationSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\",
+      "BasePath": "_content/RecommendationSite",
+      "RelativePath": "Images/iconStar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\iconStar.png"
     },
     {
       "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\microsoftLogo.png",
