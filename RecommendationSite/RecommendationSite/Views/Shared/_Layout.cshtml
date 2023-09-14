@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"]</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="~/Images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/Images/apple-touch-iconBR.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon-32x32BR.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon-16x16BR.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -14,14 +14,17 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-toggler-lg navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-white fw-bolder" asp-area="" asp-controller="Home" asp-action="Index">Recommendation</a>
+                <a class="navbar-brand text-white fw-bolder" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/Images/favicon-32x32BR.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                    ecommendation
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between g-0">
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between g-0">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-white fw-normal" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -31,7 +34,16 @@
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-beige" type="submit">Search</button>
                     </form>
-                    <div class="d-none d-sm-block vr me-1 text-white"></div>
+                    <div class="d-none d-lg-block vr me-1 text-white"></div>
+                    @if (ViewData["Title"].ToString() == "User")
+                    {
+                        <div class="nav-item ms-1 mt-2 mt-lg-0">
+                            <form asp-controller="Review" asp-action="AddReview">
+                                <button type="submit" class="btn btn-outline-success nav-link text-white">Add Review</button>
+                            </form>
+                        </div>
+                    }
+                    
                     @if (!User.Identity.IsAuthenticated)
                     {
                         <div class="nav-item">

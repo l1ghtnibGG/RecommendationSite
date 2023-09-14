@@ -39,21 +39,27 @@ namespace RecommendationSite.Controllers
         
 
         [HttpPost("Registration")]
-        public IActionResult Registration([FromForm] UserRegistration user)
+        public async Task<IActionResult> Registration([FromForm] UserRegistration userRegistration)
         {
             if (ModelState.IsValid)
             {
-                if (_userRepository.GetValues.FirstOrDefault(x => x.Email == user.EmailAddress) == null)
+                if (_userRepository.GetValues.FirstOrDefault(x => x.Email == userRegistration.EmailAddress) == null)
                 {
-                    _userRepository.Add(user);
+                    var user = _userRepository.Add(new User
+                    {
+                        Email = userRegistration.EmailAddress,
+                        Name = userRegistration.Name,
+                        Password = userRegistration.Password
+                    });
 
-                    return RedirectToAction("UserPanel");
+                    await UserSingIn(user);
+                    return RedirectToAction("UserPanel", new {user.Id});
                 }
 
                 return RedirectToAction("Error", new { message = "User already exist. Try again or log in." });
             }
 
-            return View(user);
+            return View(userRegistration);
         }
 
         [HttpGet("LogIn")]
@@ -65,7 +71,7 @@ namespace RecommendationSite.Controllers
             if (!ModelState.IsValid) 
                 return View("LogIn", userLogin);
             
-            var user = _userRepository.Authenticate(userLogin);
+            var user = Authenticate(userLogin);
 
             if (user == null)
                 return RedirectToAction("Error", new { message = "Wrong email or password. Try again or register." });
@@ -120,41 +126,42 @@ namespace RecommendationSite.Controllers
         [HttpGet("UserPanel/{Id}")]
         public IActionResult UserPanel(string Id, string Email)
         {
-            var user = new User()
+            try
             {
-                Email = Email,
-                Status = Models.User.StatusType.User
-            };
-            
-            return View();
+                var id = Guid.Parse(Id);
+
+                return View(_reviewRepository.GetValues.Where(x => x.UserId ==  id));
+            }
+            catch (FormatException ex)
+            {
+                _logger.Log(LogLevel.Critical, ex.Message, this);
+                return RedirectToAction("Error", new {  message = "Wrong user id." });
+            }
         }
 
         [Authorize(Roles = "User")]
         [HttpGet("UserPanel/{Id:guid}")]
-        public IActionResult UserPanel(Guid Id)
-        {
-            var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);
-
-            var userReviews = _reviewRepository.GetValues.Where(x => x.UserId == Id);
-
-            return View(userReviews);
-        }
+        public IActionResult UserPanel(Guid Id) => View(_reviewRepository.GetValues.Where(x => x.UserId == Id));
+        
 
         
         [Authorize(Roles = "Admin")]
         [HttpGet("AdminPanel/{Id:guid}")]
-        public IActionResult AdminPanel(Guid Id)
-        {
-            var user = _userRepository.GetValues.FirstOrDefault(x => x.Id == Id);
-            var users = _userRepository.GetValues.Where(x => x.Status == Models.User.StatusType.User);
+        public IActionResult AdminPanel(Guid Id) => View(_userRepository.GetValues.Where(x => x.Status == Models.User.StatusType.User));
 
-            return View(users);
-        }
-
-        [HttpGet("Privacy")]
-        public IActionResult Privacy()
+            public IActionResult Delete(string Id)
         {
-            return View();
+            try
+            {
+                var id = Guid.Parse(Id);
+                _userRepository.Delete(id);
+                return RedirectToAction("AdminPanel", new {Id = User.Claims.First().Value});
+            }
+            catch (FormatException ex)
+            {
+                _logger.Log(LogLevel.Critical, ex.Message);
+                return RedirectToAction("Error", new { message = "User's id is wrong" });
+            }
         }
 
         public IActionResult Error(string message) => View("Error", message);
@@ -217,6 +224,14 @@ namespace RecommendationSite.Controllers
                 _logger.Log(LogLevel.Critical, ex.Message, this);
                 return RedirectToAction("Error", new {  message = "Something went wrong" });
             }
+        }
+        
+        public User? Authenticate(UserLogIn userLogin)
+        {
+            var user = _userRepository.GetValues.FirstOrDefault(x => x.Email == userLogin.EmailAddress &&
+                                                          x.Password == userLogin.Password);
+
+            return user ?? null;
         }
     }
 }

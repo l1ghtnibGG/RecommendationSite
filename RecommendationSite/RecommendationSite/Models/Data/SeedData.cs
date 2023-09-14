@@ -15,6 +15,41 @@ namespace RecommendationSite.Models.Data
                 context.Database.Migrate();
             }
 
+            if (!context.Scores.Any())
+            {
+                context.Scores.AddRange(
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Like,
+                        UserScore = 5
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Like,
+                        UserScore = 4
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Like,
+                        UserScore = 5
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Dislike,
+                        UserScore = 2
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Dislike,
+                        UserScore = 1
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Neutral,
+                        UserScore = 4
+                    });
+            }
+
             if (!context.Users.Any())
             {
                 context.Users.AddRange(
@@ -25,8 +60,7 @@ namespace RecommendationSite.Models.Data
                         Password = "1234",
                         Status = User.StatusType.Admin,
                         CreatedDate = DateTime.Now,
-                        LastLogin = DateTime.Now,
-                        Score = 4.5f
+                        LastLogin = DateTime.Now
                     },
                     new User
                     {
@@ -35,8 +69,7 @@ namespace RecommendationSite.Models.Data
                         Password = "1234",
                         Status = User.StatusType.Admin,
                         CreatedDate = DateTime.Now.AddDays(-5),
-                        LastLogin = DateTime.Now,
-                        Score = 4.7f
+                        LastLogin = DateTime.Now
                     },
                    new User
                    {
@@ -45,8 +78,7 @@ namespace RecommendationSite.Models.Data
                        Password = "1234",
                        Status = User.StatusType.User,
                        CreatedDate = DateTime.Now.AddDays(-2),
-                       LastLogin = DateTime.Now.AddDays(-1),
-                       Score = 4f
+                       LastLogin = DateTime.Now.AddDays(-1)
                    },
                    new User
                    {
@@ -55,8 +87,7 @@ namespace RecommendationSite.Models.Data
                        Password = "1234",
                        Status = User.StatusType.User,
                        CreatedDate = DateTime.Now,
-                       LastLogin = DateTime.Now,
-                       Score = 3f
+                       LastLogin = DateTime.Now
                    },
                    new User
                    {
@@ -65,8 +96,7 @@ namespace RecommendationSite.Models.Data
                        Password = "1234",
                        Status = User.StatusType.User,
                        CreatedDate = DateTime.Now.AddDays(-2),
-                       LastLogin = DateTime.Now,
-                       Score = 2.5f
+                       LastLogin = DateTime.Now
                    },
                    new User
                    {
@@ -75,8 +105,7 @@ namespace RecommendationSite.Models.Data
                        Password = "1234",
                        Status = User.StatusType.User,
                        CreatedDate = DateTime.Now,
-                       LastLogin = DateTime.Now,
-                       Score = 3.2f
+                       LastLogin = DateTime.Now
                    },
                    new User
                    {
@@ -85,8 +114,7 @@ namespace RecommendationSite.Models.Data
                        Password = "1234",
                        Status = User.StatusType.User,
                        CreatedDate = DateTime.Now.AddDays(-3),
-                       LastLogin = DateTime.Now.AddDays(-1),
-                       Score = 3.4f
+                       LastLogin = DateTime.Now.AddDays(-1)
                    }
                 );
                 context.SaveChanges();
@@ -138,8 +166,8 @@ namespace RecommendationSite.Models.Data
                         "more as it was much longer and evoked more emotion out of me " +
                         "somehow. Nonetheless, both shows are amazing, but Naruto " +
                         "takes the cake as my all-time favorite series.",
-                        ImageUrl = "~/wwwroot/Images/Naruto.jpg",
-                        UserId = Guid.Parse("88A01264-2998-4FC8-B30E-08DBA6563D63"),
+                        ImageUrl = "/Images/Naruto.jpg",
+                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
                         Mark = 10
                     },
                     new Review
@@ -178,8 +206,8 @@ namespace RecommendationSite.Models.Data
                         "conclusion of my review, the Peaky Blinders if it were a movie should get " +
                         "an Oscar and every actor and actress deserve one as well. I loved it. So, " +
                         "by order of the Peaky Blinders, go watch the show everybody. Enjoy!",
-                        ImageUrl = "~/wwwroot/Images/PeakyBlinders.jpg",
-                        UserId = Guid.Parse("5E6D865C-EB0E-4D8D-B312-08DBA6563D63"),
+                        ImageUrl = "/Images/PeakyBlinders.jpg",
+                        UserId = Guid.Parse("5574BD41-12F3-4FFE-40AA-08DBB48EC559"),
                         Mark = 9
                     },
                     new Review
@@ -224,8 +252,8 @@ namespace RecommendationSite.Models.Data
                         " life make it a must-read for anyone seeking personal growth, a deeper understanding of s" +
                         "trategy, and the pursuit of excellence in all endeavors. By embracing Sun Tzu’s teachings, w" +
                         "e can become better leaders, decision-makers, and ultimately, better human beings.",
-                        ImageUrl = "~/wwwroot/Images/TheArtOfWar.jpg",
-                        UserId = Guid.Parse("3140773D-2172-419C-B30F-08DBA6563D63"),
+                        ImageUrl = "/Images/TheArtOfWar.jpg",
+                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
                         Mark = 6,
                     },
                     new Review
@@ -242,12 +270,93 @@ namespace RecommendationSite.Models.Data
                         "package with a story and online multiplayer. But it sticks to what it knows to stand out as a " +
                         "household name for gamers. At the end of each multiplayer session and campaign replay, I still" +
                         " warmed up to the idea of Infinity Ward channelling their old habits for better or worse.",
-                        ImageUrl = "~/wwwroot/Images/COD.jpg",
-                        UserId = Guid.Parse("88A01264-2998-4FC8-B30E-08DBA6563D63"),
+                        ImageUrl = "/Images/COD.jpg",
+                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
                         Mark = 10
                     }
                 );
                 context.SaveChanges();
+            }
+
+            if (!context.Comments.Any())
+            {
+                context.Comments.AddRange(
+                
+                    new Comment
+                    {
+                        Title = "The Best Anime Show; Best Music; and Best characters",
+                        Text = "Before Naruto, i was a die-hard fan of Dragon Ball series. I thought no anime would " +
+                               "be as great as it is. There are Many people who still consider it to be superior of all " +
+                               "anime shows. But In front of Naruto Shippuden, nothing is better. Naruto was good, but it aimed " +
+                               "for children and +. But the sequel Shippuden, has aimed for Universal Audience. Naruto has grown " +
+                               "more mature, and he is not always running behind Sakura. In this series you'll get to know more" +
+                               " about the characters past, especially Naruto. The Antagonists are more deadly and powerful. The series " +
+                               "has some HEART WRENCHING MOMENTS in it. I had to see them at least 100 times per day. In certain scenes, " +
+                               "i almost cried. Major Plus point is the Background Music. It is OUTSTANDING. No anime had/had this type of " +
+                               "Music. I admit that certain Filler episodes are just boring, but they always carry certain TYPE of " +
+                               "message with them. This anime is the GOD of all anime's and NO other anime will ever defeat it.... No.1 anime. " +
+                               "I give it a solid 10/10...",
+                        CreateDate = DateTime.Now.AddMonths(-2),
+                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
+                        ReviewId = Guid.Parse("DFA50C7A-B69F-42AA-D4A3-08DBB4944A3B")
+                    },
+                    new Comment
+                    {
+                        Title = "3 years passed since the original series, Naruto now is more mature and has learned new techniques",
+                        Text = "\"Naruto: Shippûden\" keeps up with the original series. With a bigger budget now, the drawings and effects " +
+                               "are improved, music once again is excellent, so the quality of the overall product is impeccable. As for the " +
+                               "story itself: Naruto comes back from his training with Jiraiya (one of the legendary ninjas) and has grown, so " +
+                               "he is more mature after those 3 years. Now we get to see the old characters again, so finally all that time " +
+                               "expecting with the \"filler saga\" has come to and end, this is the original Naruto, the hero's come-back. Sasuke " +
+                               "Uchiha, Kakashi Hatake, Sakura Haruno, Tsunade etc., are all back. All the things we liked from the original " +
+                               "series are here and we will get to know what happens with all the story arcs we love, Specially what happens with " +
+                               "Sasuke.",
+                        CreateDate = DateTime.Now.AddMonths(-1).AddDays(-2),
+                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
+                        ReviewId = Guid.Parse("DFA50C7A-B69F-42AA-D4A3-08DBB4944A3B")
+                    },
+                    new Comment
+                    {
+                        Title = "There's something special about this show. There's a reason it's so well received.",
+                        Text = "Peaky Blinders is a tale that is extremely loosely based on an actual English gang in the 19th century. " +
+                               "It's a story about anti-heroes, characters who you'd despise in real life, but who also generate feelings" +
+                               " of sympathy from the audience. It's such a well made show, very engaging, and there's just something so" +
+                               " special about it that makes it irresistible. I even tried to lose interest at one point, but found myself " +
+                               "longing for more, I had to continue. And Cillian Murphy just kills it. He has proven he is lead-character worthy." +
+                               "Do yourself a favor and give this show a chance. It's well deserving of that. It's full of great acting, " +
+                               "interesting plot developments, and fantastic camerawork. Be warned, you might find yourself a bit obsessed " +
+                               "with it as well.",
+                        CreateDate = DateTime.Now.AddMonths(-5).AddDays(5),
+                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
+                        ReviewId = Guid.Parse("20BBFA4C-63FB-4902-D4A4-08DBB4944A3B")
+                    },
+                    new Comment
+                    {
+                        Title = "so-so",
+                        Text = "Evidently, it seems, for the last couple thousand years, EVERYONE has been using the same textbook on how " +
+                                "to conduct a war. It also seems to be that nobody even knows for sure who wrote the book or when, but " +
+                                "everyone uses it anyway. Included in this book are precious reminders that strategy helps you win, " +
+                                "retreating helps you not die, if you outnumber the enemy 5 to 1, attacking would probably be a good idea, " +
+                                "and also if you're a tiny country surrounded by powerful countries, it might be time to make an alliance " +
+                                "or two. If these sound like things you don't already know, but would like to know, then this book is for " +
+                                "you. However, in the off-chance you're in a position to command a war against enemy forces, and you DON'T " +
+                                "study this book THOROUGHLY, you're probably going to die. Horribly. And all your country's women, children," +
+                                " and probably most of the men will be raped and slaughtered in such gruesome manner as to make those easily" +
+                                " victorious soldiers who just did the raping and slaughtering vomit from their own gruesomeness.",
+                        CreateDate = DateTime.Now.AddDays(-10),
+                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
+                        ReviewId = Guid.Parse("2CA4DDA4-D2ED-41DC-D4A5-08DBB4944A3B")
+                    },
+                    new Comment
+                    {
+                        Title = "I was addicted to this!",
+                        Text = "I remember when I was in college I used to play this game whole day. Wow Thanks to the creators of this game. " +
+                               "Call of Duty franchise is died after this game. Till BO4 no game compete this Call of Duty game.",
+                        CreateDate = DateTime.Now.AddMonths(-3).AddDays(4),
+                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
+                        ReviewId = Guid.Parse("965C00D7-0412-427C-D4A6-08DBB4944A3B")  
+                    }
+                );
             }
         }
     }

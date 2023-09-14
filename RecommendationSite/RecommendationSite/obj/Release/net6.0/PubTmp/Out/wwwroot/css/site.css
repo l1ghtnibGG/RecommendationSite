@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+img {
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.bg-beige {
+    background-color: #80653b;
+}

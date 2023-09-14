@@ -10,12 +10,7 @@
 
         IQueryable<Review> IRecommendationRepository<Review>.GetValues => _context.Reviews;
 
-        public string Add(UserRegistration user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User? Authenticate(UserLogIn user)
+        public Review Add(Review review)
         {
             throw new NotImplementedException();
         }
@@ -25,7 +20,7 @@
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public string Delete(Guid id)
         {
             throw new NotImplementedException();
         }

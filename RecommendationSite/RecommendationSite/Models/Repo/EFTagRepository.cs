@@ -11,12 +11,7 @@
 
         public IQueryable<Tag> GetValues => _context.Tags;
 
-        public string Add(UserRegistration user)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User Authenticate(UserLogIn user)
+        public Tag Add(Tag tag)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +21,7 @@
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public string Delete(Guid id)
         {
             throw new NotImplementedException();
         }

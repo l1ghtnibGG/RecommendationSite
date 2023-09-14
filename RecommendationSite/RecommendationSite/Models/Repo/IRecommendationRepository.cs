@@ -6,10 +6,8 @@
         
         public T GetItem(Guid id);
 
-        public void Save();
+        public string Delete(Guid id);
 
-        public User? Authenticate(UserLogIn user);
-
-        public string Add(UserRegistration user);
+        public T Add(T item);
     }
 }

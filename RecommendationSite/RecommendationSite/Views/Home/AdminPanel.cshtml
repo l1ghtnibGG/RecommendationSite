@@ -4,31 +4,38 @@
 
 @model IQueryable<User>;
 
-<table class="table table-bordered table-hover">
-    <thead class="bg-beige text-white fs-4">
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Email</th>
-        <th scope="col">Name</th>
-        <th scope="col">Page</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in @Model)
-    {
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead class="bg-beige text-white fs-4">
         <tr>
-            <td>@user.Id</td>
-            <td>@user.Email</td>
-            <td>@user.Name</td>
-            <td>
-                <form asp-controller="Home" asp-action="SearchUser">
-                    <input type="hidden" name="Id" value="@user.Id.ToString()"/>
-                    <button type="submit" class="btn btn-link">@user.Email page</button>
-                </form>
-            </td>
+            <th scope="col">Email</th>
+            <th scope="col">Name</th>
+            <th scope="col">Page</th>
+            <th scope="col">Delete</th>
         </tr>
-    }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+        @foreach (var user in @Model)
+        {
+            <tr>
+                <td>@user.Email</td>
+                <td>@user.Name</td>
+                <td>
+                    <form asp-controller="Home" asp-action="SearchUser">
+                        <input type="hidden" name="Id" value="@user.Id.ToString()"/>
+                        <button type="submit" class="btn btn-link">@user.Email page</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-controller="Home" asp-action="Delete">
+                        <input type="hidden" name="Id" value="@user.Id.ToString()"/>
+                        <button type="submit" class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
 
 

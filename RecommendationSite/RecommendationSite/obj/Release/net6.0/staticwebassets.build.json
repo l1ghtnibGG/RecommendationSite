@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "wl7kshFhVUPFddokO0dHVufb7ekLjUzClIiH16JD17M=",
+  "Hash": "aZnR54nnbTElwmlqTbLwfNq/TQPqbAKS+JHJm9Sd8fw=",
   "Source": "RecommendationSite",
   "BasePath": "_content/RecommendationSite",
   "Mode": "Default",
@@ -202,6 +202,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\PeakyBlinders.jpg"
+    },
+    {
+      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\ratingStar.png",
+      "SourceId": "RecommendationSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\",
+      "BasePath": "_content/RecommendationSite",
+      "RelativePath": "Images/ratingStar.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\ratingStar.png"
     },
     {
       "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\TheArtOfWar.jpg",

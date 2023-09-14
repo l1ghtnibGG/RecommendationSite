@@ -25,11 +25,16 @@ namespace RecommendationSite.Models
         public string ImageUrl { get; set; }
 
         public short Mark { get; set; }
+        
+        public Score Score { get; set; }
 
         public List<Tag> Tags { get; set; } = new();
 
+        public List<Comment> Comments { get; set; } = new();
+
         public Guid UserId { get; set; }
         public User User { get; set; }
+        
 
         public enum GroupType 
         {

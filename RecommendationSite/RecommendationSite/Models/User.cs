@@ -25,10 +25,12 @@ namespace RecommendationSite.Models
         public DateTime CreatedDate { get; set; }
 
         public DateTime LastLogin { get; set; }
-
-        public float Score { get; set; }
-
+        
+        public Score Score { get; set; }
+        
         public List<Review> Reviews { get; set; } = new();
+
+        public List<Comment> Comments { get; set; } = new();
 
         public enum StatusType
         {

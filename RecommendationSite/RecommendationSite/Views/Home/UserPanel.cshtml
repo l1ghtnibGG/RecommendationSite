@@ -4,11 +4,7 @@
 
 @model IQueryable<Review>;
 
-<div class="row justify-content-center m-4">
-    <a asp-controller="Review" asp-action="AddReview" class="btn btn-success btn-lg col-lg-3 col-md-5 col-sm-7 col-10">Add new review</a>
-</div>
-
-<div class="d-flex flex-wrap justify-content-evenly container-fluid p-4 p-sm-1 g-0">
+<div class="d-flex flex-wrap justify-content-evenly container-fluid p-1 p-md-3 p-lg-4 g-0">
     @foreach (var review in @Model)
     {
         <div class="d-flex flex-column justify-content-center align-content-center p-4">

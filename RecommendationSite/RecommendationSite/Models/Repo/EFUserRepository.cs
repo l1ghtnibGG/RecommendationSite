@@ -11,31 +11,23 @@
 
         public IQueryable<User> GetValues => _context.Users;
 
-        public string Add(UserRegistration userRegistration)
+        public User Add(User userRegistration)
         {
             var user = new User
             {
-                Email = userRegistration.EmailAddress,
+                Email = userRegistration.Email,
                 Name = userRegistration.Name,
                 Password = userRegistration.Password,
                 Status = User.StatusType.User,
                 CreatedDate = DateTime.Now,
                 LastLogin = DateTime.Now,
-                Score = 0
+                
             };
 
             _context.Add(user);
             _context.SaveChanges();
 
-            return "User added succesfully";
-        }
-
-        public User? Authenticate(UserLogIn userLogin)
-        {
-           var user = _context.Users.FirstOrDefault(x => x.Email == userLogin.EmailAddress &&
-               x.Password == userLogin.Password);
-
-           return user ?? null;
+            return user;
         }
 
         public User GetItem(Guid id)
@@ -43,9 +35,13 @@
             throw new NotImplementedException();
         }
 
-        public void Save()
+        public string Delete(Guid Id)
         {
-            throw new NotImplementedException();
+            var user = _context.Users.First(x => x.Id == Id);
+            _context.Remove(user);
+            _context.SaveChanges();
+
+            return $"Delete {user.Email} successfully";
         }
     }
 }

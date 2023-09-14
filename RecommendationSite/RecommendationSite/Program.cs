@@ -23,6 +23,8 @@ namespace RecommendationSite
             builder.Services.AddScoped<IRecommendationRepository<User>, EFUserRepository>();
             builder.Services.AddScoped<IRecommendationRepository<Review>, EFReviewRepository>();
             builder.Services.AddScoped<IRecommendationRepository<Tag>, EFTagRepository>();
+            builder.Services.AddScoped<IRecommendationRepository<Comment>, EFCommentRepository>();
+            builder.Services.AddScoped<IRecommendationRepository<Score>, EFScoreRepository>();
 
             builder.Services.AddAuthentication(options =>
                 {
