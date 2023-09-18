@@ -1,0 +1,10 @@
+﻿<div class="nav-item">
+    <form asp-controller="Home" asp-action="CheckRole">
+        <button type="submit" class="btn nav-link text-white">@User.Claims.Last().Value</button>
+    </form>
+</div>
+<div class="nav-item">
+    <form asp-controller="Home" asp-action="LogOut">
+        <button type="submit" class="btn nav-link text-white">Log out</button>
+    </form>
+</div>

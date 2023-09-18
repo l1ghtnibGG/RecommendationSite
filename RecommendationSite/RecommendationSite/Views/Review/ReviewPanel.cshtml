@@ -2,23 +2,55 @@
     ViewData["Title"] = "User";
 }
 
-@model Review
+@using Westwind.AspNetCore.Markdown
+@model Tuple<Review, IEnumerable<(Comment, string)>>
 
-<div class="d-flex flex-row container g-0">
-    <div class="row m-auto">
-        <div class="col-12 p-4">
-            <div class="col-lg-4 col-md-7 col-sm-7 col-12">
-                <img src="@Model.ImageUrl" class="float-lg-start float-md-start float-sm-start rounded mb-2 me-sm-3 w-100" alt="@Model.ImageUrl"/>
+<div class="mb-5">
+    <div class="d-flex flex-row container g-0">
+        <div class="row m-auto">
+            <div class="col-12 p-4">
+                <div class="col-lg-4 col-md-7 col-sm-7 col-12">
+                    <img src="@Model.Item1.ImageUrl" height="600" class="float-lg-start float-md-start
+                            float-sm-start rounded mb-2 me-sm-3 w-100" alt="@Model.Item1.ImageUrl" />
+                </div>
+                <h4>@User.Claims.Last().Value</h4>
+                <div class="row-auto m-1">
+                    <img src="/Images/ratingStar.png" class="float-start me-2 col" alt="Star" />
+                    <h3 class="col mb-0 mt-1 fw-lighter">@Model.Item1.Mark/10</h3>
+                </div>
+                <h3 class="fw-bolder mt-lg-0 mt-md-1 mt-sm-2 mt-3">@Model.Item1.Title</h3>
+                <h5>@Model.Item1.Name</h5>
+                <markdown normalize-whitespace="true">
+                    @Model.Item1.Text
+                </markdown>
             </div>
-            <h4>@User.Claims.Last().Value</h4>
-            <div class="row-auto m-1">
-                <img src="/Images/ratingStar.png" class="float-start me-1 col" alt="Star"/>
-                <h3 class="col mb-0 fw-lighter">@Model.Mark/10</h3>
+        </div>
+    </div>
+    <div class="container g-0">
+        <div class="row m-auto">
+            <div class="col-12 p-4">
+                <h3 class="ms-2">Comments</h3>
+                @foreach (var comment in @Model.Item2)
+                {
+                    <div class="bg-gray my-3 py-lg-3 py-2 px-lg-5 px-md-3 px-2 rounded-3 col-12">
+                        <h5>@comment.Item2</h5>
+                        <p>@comment.Item1.Title</p>
+                        <p>@comment.Item1.Text</p>
+                        @if (@DateTime.Now.Subtract(@comment.Item1.CreateDate).Days < 1)
+                        {
+                            <p class="text-secondary">@DateTime.Now.Subtract(@comment.Item1.CreateDate).Hours hours ago</p>
+                        }
+                        else if (@DateTime.Now.Subtract(@comment.Item1.CreateDate).Days < 8)
+                        {
+                            <p class="text-secondary">@DateTime.Now.Subtract(@comment.Item1.CreateDate).Days days ago</p>
+                        }
+                        else
+                        {
+                            <p class="text-secondary">@comment.Item1.CreateDate.ToString("dd/MM/yyyy")</p>
+                        }
+                    </div>
+                }
             </div>
-            <h3 class="fw-bolder">@Model.Title</h3>
-            <h5>@Model.Name</h5>
-            <p>@Model.Text</p>
         </div>
     </div>
 </div>
-

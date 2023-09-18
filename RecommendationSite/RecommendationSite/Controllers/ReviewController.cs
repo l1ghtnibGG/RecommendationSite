@@ -8,11 +8,15 @@ public class ReviewController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly IRecommendationRepository<Review> _reviewRepository;
-
-    public ReviewController(ILogger<HomeController> logger, IRecommendationRepository<Review> reviewRepository)
+    private readonly IRecommendationRepository<Comment> _commentRepository;
+    private readonly IRecommendationRepository<User> _userRepository;
+    public ReviewController(ILogger<HomeController> logger, IRecommendationRepository<Review> reviewRepository,
+        IRecommendationRepository<Comment> commentRepository, IRecommendationRepository<User> userRepository)
     {
         _logger = logger;
         _reviewRepository = reviewRepository;
+        _commentRepository = commentRepository;
+        _userRepository = userRepository;
     }
 
     [HttpGet("/Review/{Id}")]
@@ -21,11 +25,18 @@ public class ReviewController : Controller
         var review = SearchReview(Id);
 
         if (review == null)
-        {
-            return RedirectToAction("Error", "Home", new {message = "Review not found"});
-        }
-        
-        return View("ReviewPanel", review);
+                return RedirectToAction("Error", "Home", new {message = "Review not found"});
+
+        var commentUser = 
+            (from comment in _commentRepository.GetValues.Where(x => x.ReviewId == review.Id)
+            join user in _userRepository.GetValues on comment.UserId equals user.Id
+            select new
+            {
+                Comments = comment,
+                UserEmail = user.Email
+            }).AsEnumerable().Select(x => (x.Comments, x.UserEmail));
+
+        return View("ReviewPanel",  new Tuple<Review, IEnumerable<(Comment, string)>>(review, commentUser));
     }
 
     private Review SearchReview(string Id)

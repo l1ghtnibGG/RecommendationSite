@@ -7,6 +7,7 @@ using Microsoft.Extensions.Options;
 using RecommendationSite.Models;
 using RecommendationSite.Models.Data;
 using RecommendationSite.Models.Repo;
+using Westwind.AspNetCore.Markdown;
 
 namespace RecommendationSite
 {
@@ -56,7 +57,7 @@ namespace RecommendationSite
 
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("Home/Error");
                 app.UseHsts();
             }
 

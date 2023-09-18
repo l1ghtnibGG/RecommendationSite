@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Dw3ftM5rVuNlJFKqjtigGF126Zo8j+Q0PJppgUEkSSVVHTS03uOe6iZy0Q6LQhc7EJ6IiqOX0YnzMpQj1gRhuA==",
+  "dgSpecHash": "PHf7kYZ0mlovk0EupzILuwjEd4FkbNFK1DJOTioRo2mDE7SIkY/ZKwa4qvLTlj22oaBYYey404hzfjLXZaBvwA==",
   "success": true,
   "projectFilePath": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\RecommendationSite.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vladi\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\vladi\\.nuget\\packages\\markdig\\0.32.0\\markdig.0.32.0.nupkg.sha512",
     "C:\\Users\\vladi\\.nuget\\packages\\microsoft.aspnetcore.authentication.google\\6.0.21\\microsoft.aspnetcore.authentication.google.6.0.21.nupkg.sha512",
     "C:\\Users\\vladi\\.nuget\\packages\\microsoft.aspnetcore.authentication.microsoftaccount\\6.0.21\\microsoft.aspnetcore.authentication.microsoftaccount.6.0.21.nupkg.sha512",
     "C:\\Users\\vladi\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.21\\microsoft.aspnetcore.cryptography.internal.6.0.21.nupkg.sha512",
@@ -62,7 +63,8 @@
     "C:\\Users\\vladi\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\vladi\\.nuget\\packages\\system.text.encodings.web\\6.0.2-mauipre.1.22102.15\\system.text.encodings.web.6.0.2-mauipre.1.22102.15.nupkg.sha512",
     "C:\\Users\\vladi\\.nuget\\packages\\system.text.json\\6.0.2-mauipre.1.22102.15\\system.text.json.6.0.2-mauipre.1.22102.15.nupkg.sha512",
-    "C:\\Users\\vladi\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\vladi\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\vladi\\.nuget\\packages\\westwind.aspnetcore.markdown\\3.12.0\\westwind.aspnetcore.markdown.3.12.0.nupkg.sha512"
   ],
   "logs": []
 }

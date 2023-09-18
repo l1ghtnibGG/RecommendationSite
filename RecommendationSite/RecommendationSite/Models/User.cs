@@ -26,7 +26,7 @@ namespace RecommendationSite.Models
 
         public DateTime LastLogin { get; set; }
         
-        public Score Score { get; set; }
+        public List<Score> Scores { get; set; } = new();
         
         public List<Review> Reviews { get; set; } = new();
 

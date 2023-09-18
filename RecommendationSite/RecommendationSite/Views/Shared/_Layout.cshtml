@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="black">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,13 +7,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="~/Images/apple-touch-iconBR.png">
     <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon-32x32BR.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon-16x16BR.png">
-    <link rel="manifest" href="/site.webmanifest">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RecommendationSite.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-toggler-lg navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand text-white fw-bolder" asp-area="" asp-controller="Home" asp-action="Index">
@@ -29,6 +28,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-white fw-normal" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+                        <li class="nav-item ml-md-auto"><a href="#" class="btn btn-primary switch">Switch Light/Dark</a></li>
                     </ul>
                     <form class="d-flex me-5">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -38,12 +38,11 @@
                     @if (ViewData["Title"].ToString() == "User")
                     {
                         <div class="nav-item ms-1 mt-2 mt-lg-0">
-                            <form asp-controller="Review" asp-action="AddReview">
+                            <form method="get" asp-controller="Review" asp-action="AddReview">
                                 <button type="submit" class="btn btn-outline-success nav-link text-white">Add Review</button>
                             </form>
                         </div>
                     }
-                    
                     @if (!User.Identity.IsAuthenticated)
                     {
                         <div class="nav-item">
@@ -54,16 +53,7 @@
                     }
                     else
                     {
-                        <div class="nav-item">
-                            <form asp-controller="Home" asp-action="CheckRole">
-                                <button type="submit" class="btn nav-link text-white">@User.Claims.Last().Value</button>
-                            </form>
-                        </div>
-                        <div class="nav-item">
-                            <form asp-controller="Home" asp-action="LogOut">
-                                <button type="submit" class="btn nav-link text-white">Log out</button>
-                            </form>
-                        </div>
+                        @await Html.PartialAsync("_PartialLogInNavbar");
                     }
                 </div>
             </div>

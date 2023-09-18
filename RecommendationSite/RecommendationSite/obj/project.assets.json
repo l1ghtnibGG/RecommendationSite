@@ -11,6 +11,15 @@
           "lib/netstandard2.0/Humanizer.dll": {}
         }
       },
+      "Markdig/0.32.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/Markdig.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Markdig.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Authentication.Google/6.0.21": {
         "type": "package",
         "compile": {
@@ -865,6 +874,21 @@
             "rid": "win"
           }
         }
+      },
+      "Westwind.AspNetCore.Markdown/3.12.0": {
+        "type": "package",
+        "dependencies": {
+          "Markdig": "0.32.0"
+        },
+        "compile": {
+          "lib/net6.0/Westwind.AspNetCore.Markdown.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/Westwind.AspNetCore.Markdown.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },
@@ -883,6 +907,27 @@
         "lib/netstandard2.0/Humanizer.dll",
         "lib/netstandard2.0/Humanizer.xml",
         "logo.png"
+      ]
+    },
+    "Markdig/0.32.0": {
+      "sha512": "+e6YobdcPgV5AsSgGqOi9B7biDgw2Fi4ZHRamwecvDeCEh5WFTlIClmKQP+CMkYUP9jwz7NANuwN2HC79kll4Q==",
+      "type": "package",
+      "path": "markdig/0.32.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net462/Markdig.dll",
+        "lib/net462/Markdig.xml",
+        "lib/net6.0/Markdig.dll",
+        "lib/net6.0/Markdig.xml",
+        "lib/netstandard2.0/Markdig.dll",
+        "lib/netstandard2.0/Markdig.xml",
+        "lib/netstandard2.1/Markdig.dll",
+        "lib/netstandard2.1/Markdig.xml",
+        "markdig.0.32.0.nupkg.sha512",
+        "markdig.nuspec",
+        "markdig.png",
+        "readme.md"
       ]
     },
     "Microsoft.AspNetCore.Authentication.Google/6.0.21": {
@@ -2437,6 +2482,26 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Westwind.AspNetCore.Markdown/3.12.0": {
+      "sha512": "H/Tzx1TsgsvJWyUsz9+/fKAxe1HWScCENYyH7HwdvxEePUbL4rQ4YR0cwZ0ek44ql0RlBwXMQo8FMBHt2gMKzQ==",
+      "type": "package",
+      "path": "westwind.aspnetcore.markdown/3.12.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.MD",
+        "README.md",
+        "icon.png",
+        "lib/net6.0/Westwind.AspNetCore.Markdown.dll",
+        "lib/net6.0/Westwind.AspNetCore.Markdown.xml",
+        "lib/net7.0/Westwind.AspNetCore.Markdown.dll",
+        "lib/net7.0/Westwind.AspNetCore.Markdown.xml",
+        "lib/netcoreapp3.1/Westwind.AspNetCore.Markdown.dll",
+        "lib/netcoreapp3.1/Westwind.AspNetCore.Markdown.xml",
+        "westwind.aspnetcore.markdown.3.12.0.nupkg.sha512",
+        "westwind.aspnetcore.markdown.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -2446,7 +2511,8 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 6.0.21",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.21",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.21",
-      "Microsoft.Extensions.Configuration.UserSecrets >= 6.0.2-mauipre.1.22102.15"
+      "Microsoft.Extensions.Configuration.UserSecrets >= 6.0.2-mauipre.1.22102.15",
+      "Westwind.AspNetCore.Markdown >= 3.12.0"
     ]
   },
   "packageFolders": {
@@ -2518,6 +2584,10 @@
           "Microsoft.Extensions.Configuration.UserSecrets": {
             "target": "Package",
             "version": "[6.0.2-mauipre.1.22102.15, )"
+          },
+          "Westwind.AspNetCore.Markdown": {
+            "target": "Package",
+            "version": "[3.12.0, )"
           }
         },
         "imports": [

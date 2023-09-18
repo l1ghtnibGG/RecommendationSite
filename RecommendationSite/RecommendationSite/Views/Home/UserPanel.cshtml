@@ -11,7 +11,7 @@
             <h5 class="fw-bolder">@review.Title</h5>
             <div class="row mb-1">
                 <a asp-controller="Review" asp-action="ReviewPanel" asp-route-Id="@review.Id.ToString()">
-                    <img src="@review.ImageUrl" width="300" height="400" class="" alt="@review.ImageUrl"/>
+                    <img src="@review.ImageUrl" width="300" height="400" class="rounded" alt="@review.ImageUrl"/>
                 </a>
             </div>
             <div class="d-flex flex-row">

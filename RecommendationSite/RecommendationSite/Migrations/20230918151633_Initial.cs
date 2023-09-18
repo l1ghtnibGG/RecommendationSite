@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace RecommendationSite.Migrations
 {
-    public partial class Init : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -160,16 +160,12 @@ namespace RecommendationSite.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_ReviewId",
                 table: "Scores",
-                column: "ReviewId",
-                unique: true,
-                filter: "[ReviewId] IS NOT NULL");
+                column: "ReviewId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Scores_UserId",
                 table: "Scores",
-                column: "UserId",
-                unique: true,
-                filter: "[UserId] IS NOT NULL");
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

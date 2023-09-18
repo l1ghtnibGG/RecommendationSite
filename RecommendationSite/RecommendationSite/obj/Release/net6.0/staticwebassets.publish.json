@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MSMuQIuYwaJhH4KMz+5PdI7BpomzR3DX1JIFSEo1jN8=",
+  "Hash": "twtPLtM/zn4HwscPI1S0I7Qc7st8S6MBdQU57OBjxgw=",
   "Source": "RecommendationSite",
   "BasePath": "_content/RecommendationSite",
   "Mode": "Default",
@@ -68,12 +68,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\apple-touch-icon.png",
+      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\apple-touch-iconBR.png",
       "SourceId": "RecommendationSite",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\",
       "BasePath": "_content/RecommendationSite",
-      "RelativePath": "Images/apple-touch-icon.png",
+      "RelativePath": "Images/apple-touch-iconBR.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -82,7 +82,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\apple-touch-icon.png"
+      "OriginalItemSpec": "wwwroot\\Images\\apple-touch-iconBR.png"
     },
     {
       "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\COD.jpg",
@@ -102,12 +102,12 @@
       "OriginalItemSpec": "wwwroot\\Images\\COD.jpg"
     },
     {
-      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\favicon-16x16.png",
+      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\favicon-16x16BR.png",
       "SourceId": "RecommendationSite",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\",
       "BasePath": "_content/RecommendationSite",
-      "RelativePath": "Images/favicon-16x16.png",
+      "RelativePath": "Images/favicon-16x16BR.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,15 +116,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\favicon-16x16.png"
+      "OriginalItemSpec": "wwwroot\\Images\\favicon-16x16BR.png"
     },
     {
-      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\favicon-32x32.png",
+      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\favicon-32x32BR.png",
       "SourceId": "RecommendationSite",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\",
       "BasePath": "_content/RecommendationSite",
-      "RelativePath": "Images/favicon-32x32.png",
+      "RelativePath": "Images/favicon-32x32BR.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -133,7 +133,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\favicon-32x32.png"
+      "OriginalItemSpec": "wwwroot\\Images\\favicon-32x32BR.png"
     },
     {
       "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\googleLogo.png",

@@ -1,14 +1,16 @@
 ﻿<div class="row col-sm-8 col-md-8 col-lg-7 g-0">
     <div class="p-3 col-6">
-    <form asp-controller="Home" asp-action="SignInGoogle">
+    <form asp-controller="Home" asp-action="SignInSocialNet">
         <div class="text-center col-sm">
+            <input type="hidden" name="social" value="Google"/>
             <button type="submit" class="btn btn-lg btn-google btn-block btn-outline-warning"><img src="~/Images/googleLogo.png"> Sign in using Google</button>
         </div>
     </form>
     </div>
     <div class="p-3 col-6">
-    <form asp-controller="Home" asp-action="SignInMicrosoft">
+    <form asp-controller="Home" asp-action="SignInSocialNet">
         <div class="text-center col-sm">
+            <input type="hidden" name="social" value="Microsoft"/>
             <button type="submit" class="btn btn-lg btn-microsoft btn-block btn-outline-success"><img src="~/Images/microsoftLogo.png"> Sign in using Microsoft</button>
         </div>
     </form>

@@ -26,16 +26,16 @@ namespace RecommendationSite.Models
 
         public short Mark { get; set; }
         
-        public Score Score { get; set; }
+        public Guid UserId { get; set; }
+        public User User { get; set; }
+        
+        
+        public List<Score> Scores { get; set; }
 
         public List<Tag> Tags { get; set; } = new();
 
         public List<Comment> Comments { get; set; } = new();
-
-        public Guid UserId { get; set; }
-        public User User { get; set; }
         
-
         public enum GroupType 
         {
             Book,

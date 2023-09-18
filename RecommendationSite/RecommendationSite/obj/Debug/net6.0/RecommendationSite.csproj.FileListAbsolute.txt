@@ -81,3 +81,6 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Deb
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\System.Text.Json.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Markdig.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Westwind.AspNetCore.Markdown.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Debug\net6.0\RecommendationSite.MvcApplicationPartsAssemblyInfo.cs

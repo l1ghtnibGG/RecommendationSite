@@ -14,42 +14,7 @@ namespace RecommendationSite.Models.Data
             {
                 context.Database.Migrate();
             }
-
-            if (!context.Scores.Any())
-            {
-                context.Scores.AddRange(
-                    new Score
-                    {
-                        Like = Score.LikeStatus.Like,
-                        UserScore = 5
-                    },
-                    new Score
-                    {
-                        Like = Score.LikeStatus.Like,
-                        UserScore = 4
-                    },
-                    new Score
-                    {
-                        Like = Score.LikeStatus.Like,
-                        UserScore = 5
-                    },
-                    new Score
-                    {
-                        Like = Score.LikeStatus.Dislike,
-                        UserScore = 2
-                    },
-                    new Score
-                    {
-                        Like = Score.LikeStatus.Dislike,
-                        UserScore = 1
-                    },
-                    new Score
-                    {
-                        Like = Score.LikeStatus.Neutral,
-                        UserScore = 4
-                    });
-            }
-
+            
             if (!context.Users.Any())
             {
                 context.Users.AddRange(
@@ -70,6 +35,7 @@ namespace RecommendationSite.Models.Data
                         Status = User.StatusType.Admin,
                         CreatedDate = DateTime.Now.AddDays(-5),
                         LastLogin = DateTime.Now
+                        
                     },
                    new User
                    {
@@ -115,8 +81,7 @@ namespace RecommendationSite.Models.Data
                        Status = User.StatusType.User,
                        CreatedDate = DateTime.Now.AddDays(-3),
                        LastLogin = DateTime.Now.AddDays(-1)
-                   }
-                );
+                   });
                 context.SaveChanges();
             }
 
@@ -138,9 +103,19 @@ namespace RecommendationSite.Models.Data
                     new Tag
                     {
                         Name = "Oldest"
-                    }
-                );
-
+                    },
+                    new Tag
+                    {
+                        Name = "Movies"
+                    },
+                    new Tag
+                    {
+                        Name = "Games"
+                    },
+                    new Tag
+                    {
+                        Name = "Books"
+                    });
                 context.SaveChanges();
             }
 
@@ -167,7 +142,7 @@ namespace RecommendationSite.Models.Data
                         "somehow. Nonetheless, both shows are amazing, but Naruto " +
                         "takes the cake as my all-time favorite series.",
                         ImageUrl = "/Images/Naruto.jpg",
-                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "petya@gmail.com").Id.ToString()),
                         Mark = 10
                     },
                     new Review
@@ -207,7 +182,7 @@ namespace RecommendationSite.Models.Data
                         "an Oscar and every actor and actress deserve one as well. I loved it. So, " +
                         "by order of the Peaky Blinders, go watch the show everybody. Enjoy!",
                         ImageUrl = "/Images/PeakyBlinders.jpg",
-                        UserId = Guid.Parse("5574BD41-12F3-4FFE-40AA-08DBB48EC559"),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "masha12@mail.ru").Id.ToString()),
                         Mark = 9
                     },
                     new Review
@@ -253,7 +228,7 @@ namespace RecommendationSite.Models.Data
                         "trategy, and the pursuit of excellence in all endeavors. By embracing Sun Tzu’s teachings, w" +
                         "e can become better leaders, decision-makers, and ultimately, better human beings.",
                         ImageUrl = "/Images/TheArtOfWar.jpg",
-                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "petya@gmail.com").Id.ToString()),
                         Mark = 6,
                     },
                     new Review
@@ -271,10 +246,9 @@ namespace RecommendationSite.Models.Data
                         "household name for gamers. At the end of each multiplayer session and campaign replay, I still" +
                         " warmed up to the idea of Infinity Ward channelling their old habits for better or worse.",
                         ImageUrl = "/Images/COD.jpg",
-                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "petya@gmail.com").Id.ToString()),
                         Mark = 10
-                    }
-                );
+                    });
                 context.SaveChanges();
             }
 
@@ -297,8 +271,8 @@ namespace RecommendationSite.Models.Data
                                "message with them. This anime is the GOD of all anime's and NO other anime will ever defeat it.... No.1 anime. " +
                                "I give it a solid 10/10...",
                         CreateDate = DateTime.Now.AddMonths(-2),
-                        UserId = Guid.Parse("DA2990C2-C336-44FC-40A8-08DBB48EC559"),
-                        ReviewId = Guid.Parse("DFA50C7A-B69F-42AA-D4A3-08DBB4944A3B")
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Naruto").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
                     },
                     new Comment
                     {
@@ -312,8 +286,8 @@ namespace RecommendationSite.Models.Data
                                "series are here and we will get to know what happens with all the story arcs we love, Specially what happens with " +
                                "Sasuke.",
                         CreateDate = DateTime.Now.AddMonths(-1).AddDays(-2),
-                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
-                        ReviewId = Guid.Parse("DFA50C7A-B69F-42AA-D4A3-08DBB4944A3B")
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Naruto").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "masha12@mail.ru").Id.ToString())
                     },
                     new Comment
                     {
@@ -327,8 +301,8 @@ namespace RecommendationSite.Models.Data
                                "interesting plot developments, and fantastic camerawork. Be warned, you might find yourself a bit obsessed " +
                                "with it as well.",
                         CreateDate = DateTime.Now.AddMonths(-5).AddDays(5),
-                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
-                        ReviewId = Guid.Parse("20BBFA4C-63FB-4902-D4A4-08DBB4944A3B")
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Peaky Blinders").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
                     },
                     new Comment
                     {
@@ -344,8 +318,8 @@ namespace RecommendationSite.Models.Data
                                 " and probably most of the men will be raped and slaughtered in such gruesome manner as to make those easily" +
                                 " victorious soldiers who just did the raping and slaughtering vomit from their own gruesomeness.",
                         CreateDate = DateTime.Now.AddDays(-10),
-                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
-                        ReviewId = Guid.Parse("2CA4DDA4-D2ED-41DC-D4A5-08DBB4944A3B")
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "The art of war").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
                     },
                     new Comment
                     {
@@ -353,10 +327,65 @@ namespace RecommendationSite.Models.Data
                         Text = "I remember when I was in college I used to play this game whole day. Wow Thanks to the creators of this game. " +
                                "Call of Duty franchise is died after this game. Till BO4 no game compete this Call of Duty game.",
                         CreateDate = DateTime.Now.AddMonths(-3).AddDays(4),
-                        UserId = Guid.Parse("F7B060BC-E218-4F32-40A9-08DBB48EC559"),
-                        ReviewId = Guid.Parse("965C00D7-0412-427C-D4A6-08DBB4944A3B")  
-                    }
-                );
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Call of Duty: Modern Warfare 2").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())  
+                    });
+                context.SaveChanges();
+            }
+            
+            if (!context.Scores.Any())
+            {
+                context.Scores.AddRange(
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Like,
+                        UserScore = 5,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Naruto").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Like,
+                        UserScore = 4,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Peaky Blinders").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Neutral,
+                        UserScore = 5,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Naruto").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "nika3@mail.ru").Id.ToString())
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Like,
+                        UserScore = 5,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Naruto").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "sasha@mail.ru").Id.ToString())
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Neutral,
+                        UserScore = 5,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "Call of Duty: Modern Warfare 2").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Dislike,
+                        UserScore = 2,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "The art of war").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "vova@gmail.com").Id.ToString())
+                    },
+                    new Score
+                    {
+                        Like = Score.LikeStatus.Neutral,
+                        UserScore = 1,
+                        ReviewId = Guid.Parse(context.Reviews.First(x => x.Title == "The art of war").Id.ToString()),
+                        UserId = Guid.Parse(context.Users.First(x => x.Email == "masha12@mail.ru").Id.ToString())
+                    });
+                context.SaveChanges();
             }
         }
     }

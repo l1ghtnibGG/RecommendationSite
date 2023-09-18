@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RecommendationSite.Models;
 using RecommendationSite.Models.Repo;
-using RecommendationSite.ViewModels;
 using System.Diagnostics;
 using System.Security.Claims;
 
@@ -43,23 +42,30 @@ namespace RecommendationSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_userRepository.GetValues.FirstOrDefault(x => x.Email == userRegistration.EmailAddress) == null)
+                if (_userRepository.GetValues.FirstOrDefault(x => 
+                        x.Email == userRegistration.EmailAddress) == null)
                 {
-                    var user = _userRepository.Add(new User
+                    return await CreateUser(new User
                     {
                         Email = userRegistration.EmailAddress,
                         Name = userRegistration.Name,
                         Password = userRegistration.Password
                     });
-
-                    await UserSingIn(user);
-                    return RedirectToAction("UserPanel", new {user.Id});
                 }
 
-                return RedirectToAction("Error", new { message = "User already exist. Try again or log in." });
+                return RedirectToAction("Error", new { message = 
+                    "User already exist. Try again or log in." });
             }
 
             return View(userRegistration);
+        }
+
+        private async Task<IActionResult> CreateUser(User user)
+        {
+            var createdUser = _userRepository.Add(user);
+
+            await UserSingIn(createdUser);
+            return RedirectToAction("UserPanel", new {createdUser.Id});
         }
 
         [HttpGet("LogIn")]
@@ -69,28 +75,23 @@ namespace RecommendationSite.Controllers
         public async Task<IActionResult> LogIn([FromForm]UserLogIn userLogin)
         {
             if (!ModelState.IsValid) 
-                return View("LogIn", userLogin);
+                return View(userLogin);
             
             var user = Authenticate(userLogin);
 
             if (user == null)
-                return RedirectToAction("Error", new { message = "Wrong email or password. Try again or register." });
+                return RedirectToAction("Error", new { message = 
+                    "Wrong email or password. Try again or register." });
             
+
             await UserSingIn(user);
-            return RedirectToAction(user.Status.ToString() == "Admin" ? "AdminPanel" : "UserPanel", new { user.Id });
+            return RedirectToAction(user.Status.ToString() == "Admin" ? 
+                "AdminPanel" : "UserPanel", new { user.Id });
         }
 
-        public async Task SignInGoogle()
+        public async Task SignInSocialNet(string social)
         {
-            await HttpContext.ChallengeAsync(GoogleDefaults.AuthenticationScheme, new AuthenticationProperties()
-            {
-                RedirectUri = Url.Action("SignInBySocial")
-            });
-        }
-
-        public async Task SignInMicrosoft()
-        {
-            await HttpContext.ChallengeAsync(MicrosoftAccountDefaults.AuthenticationScheme, new AuthenticationProperties()
+            await HttpContext.ChallengeAsync(social, new AuthenticationProperties()
             {
                 RedirectUri = Url.Action("SignInBySocial")
             });
@@ -106,11 +107,21 @@ namespace RecommendationSite.Controllers
                         claim.Type,
                         claim.Value
                     });
-            
-            var id = claims.First().Value;
-            var email = claims.Last().Value;
 
-            return RedirectToAction("UserPanel", new {Id = id, Email = email});
+            var userLogIn = new UserLogIn()
+            {
+                EmailAddress = claims.Last().Value,
+                Password = claims.First().Value
+            };
+
+            var user = Authenticate(userLogIn) ?? _userRepository.Add(new User
+            {
+                Email = userLogIn.EmailAddress,
+                Name = claims.Skip(2).First().Value,
+                Password = userLogIn.Password
+            });
+
+            return RedirectToAction("UserPanel", new { email = user.Email });
         }
 
         [HttpPost]
@@ -123,44 +134,36 @@ namespace RecommendationSite.Controllers
 
         [Authorize(AuthenticationSchemes = GoogleDefaults.AuthenticationScheme)]
         [Authorize(AuthenticationSchemes = MicrosoftAccountDefaults.AuthenticationScheme)]
-        [HttpGet("UserPanel/{Id}")]
-        public IActionResult UserPanel(string Id, string Email)
-        {
-            try
-            {
-                var id = Guid.Parse(Id);
-
-                return View(_reviewRepository.GetValues.Where(x => x.UserId ==  id));
-            }
-            catch (FormatException ex)
-            {
-                _logger.Log(LogLevel.Critical, ex.Message, this);
-                return RedirectToAction("Error", new {  message = "Wrong user id." });
-            }
-        }
+        [HttpGet("UserPanel/{email}")]
+        public IActionResult UserPanel(string email) => View( _reviewRepository
+            .GetValues.Where(x => x.User.Email == email));
 
         [Authorize(Roles = "User")]
         [HttpGet("UserPanel/{Id:guid}")]
-        public IActionResult UserPanel(Guid Id) => View(_reviewRepository.GetValues.Where(x => x.UserId == Id));
-        
-
+        public IActionResult UserPanel(Guid Id) => View(_reviewRepository
+            .GetValues.Where(x => x.UserId == Id));
         
         [Authorize(Roles = "Admin")]
         [HttpGet("AdminPanel/{Id:guid}")]
-        public IActionResult AdminPanel(Guid Id) => View(_userRepository.GetValues.Where(x => x.Status == Models.User.StatusType.User));
+        public IActionResult AdminPanel(Guid Id) => View(_userRepository
+            .GetValues.Where(x => x.Status == Models.User.StatusType.User));
 
-            public IActionResult Delete(string Id)
+        public IActionResult Delete(string Id)
         {
             try
             {
                 var id = Guid.Parse(Id);
                 _userRepository.Delete(id);
-                return RedirectToAction("AdminPanel", new {Id = User.Claims.First().Value});
+                return RedirectToAction("AdminPanel", new
+                {
+                    Id = User.Claims.First().Value
+                });
             }
             catch (FormatException ex)
             {
                 _logger.Log(LogLevel.Critical, ex.Message);
-                return RedirectToAction("Error", new { message = "User's id is wrong" });
+                return RedirectToAction("Error", new { message = 
+                    "User's id is wrong" });
             }
         }
 
@@ -178,10 +181,11 @@ namespace RecommendationSite.Controllers
         {
             if (User.Identity.AuthenticationType != "Cookies")
             {
-                var id = User.Claims.First().Value;
-                var email = User.Claims.Last().Value;
+                var id = _userRepository.GetValues.First(x => 
+                    x.Email == User.Claims.Last().Value).Id.ToString();
+                var userEmail = User.Claims.Last().Value;
 
-                return RedirectToAction("UserPanel", new { Id = id, Email = email });
+                return RedirectToAction("UserPanel", new { email = userEmail});
             }
             
             return SelectPanel();
@@ -191,8 +195,9 @@ namespace RecommendationSite.Controllers
         {
             var id = User.Claims.First().Value;
             
-            return User.Claims.Skip(1).First().Value == "Admin" ? RedirectToAction("AdminPanel", new { Id = id}) 
-                : RedirectToAction("UserPanel", new { id });
+            return User.Claims.Skip(1).First().Value == "Admin" ? 
+                RedirectToAction("AdminPanel", new { id }) : 
+                RedirectToAction("UserPanel", new { id });
         }
 
         public async Task UserSingIn(User user)
@@ -201,7 +206,8 @@ namespace RecommendationSite.Controllers
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
+                new ClaimsPrincipal(claimsIdentity));
         }
 
         public async Task<IActionResult> SearchUser(string Id)
@@ -217,21 +223,19 @@ namespace RecommendationSite.Controllers
             catch (ArgumentNullException ex)
             {
                 _logger.Log(LogLevel.Critical, ex.Message, this);
-                return RedirectToAction("Error", new { message = "Something went wrong" });
+                return RedirectToAction("Error", new { message = 
+                    "Something went wrong" });
             }
             catch (FormatException ex)
             {
                 _logger.Log(LogLevel.Critical, ex.Message, this);
-                return RedirectToAction("Error", new {  message = "Something went wrong" });
+                return RedirectToAction("Error", new {  message = 
+                    "Something went wrong" });
             }
         }
         
-        public User? Authenticate(UserLogIn userLogin)
-        {
-            var user = _userRepository.GetValues.FirstOrDefault(x => x.Email == userLogin.EmailAddress &&
-                                                          x.Password == userLogin.Password);
-
-            return user ?? null;
-        }
+        private User? Authenticate(UserLogIn userLogin) => _userRepository.
+            GetValues.FirstOrDefault(x => x.Email == userLogin.EmailAddress && 
+                                          x.Password == userLogin.Password) ?? null;
     }
 }

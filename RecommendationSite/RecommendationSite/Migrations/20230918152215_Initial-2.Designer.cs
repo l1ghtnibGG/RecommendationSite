@@ -12,8 +12,8 @@ using RecommendationSite.Models;
 namespace RecommendationSite.Migrations
 {
     [DbContext(typeof(RecommendationDbContext))]
-    [Migration("20230913191915_Init")]
-    partial class Init
+    [Migration("20230918152215_Initial-2")]
+    partial class Initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -114,13 +114,9 @@ namespace RecommendationSite.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ReviewId")
-                        .IsUnique()
-                        .HasFilter("[ReviewId] IS NOT NULL");
+                    b.HasIndex("ReviewId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Scores");
                 });
@@ -216,12 +212,12 @@ namespace RecommendationSite.Migrations
             modelBuilder.Entity("RecommendationSite.Models.Score", b =>
                 {
                     b.HasOne("RecommendationSite.Models.Review", "Review")
-                        .WithOne("Score")
-                        .HasForeignKey("RecommendationSite.Models.Score", "ReviewId");
+                        .WithMany("Scores")
+                        .HasForeignKey("ReviewId");
 
                     b.HasOne("RecommendationSite.Models.User", "User")
-                        .WithOne("Score")
-                        .HasForeignKey("RecommendationSite.Models.Score", "UserId");
+                        .WithMany("Scores")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Review");
 
@@ -247,8 +243,7 @@ namespace RecommendationSite.Migrations
                 {
                     b.Navigation("Comments");
 
-                    b.Navigation("Score")
-                        .IsRequired();
+                    b.Navigation("Scores");
                 });
 
             modelBuilder.Entity("RecommendationSite.Models.User", b =>
@@ -257,8 +252,7 @@ namespace RecommendationSite.Migrations
 
                     b.Navigation("Reviews");
 
-                    b.Navigation("Score")
-                        .IsRequired();
+                    b.Navigation("Scores");
                 });
 #pragma warning restore 612, 618
         }
