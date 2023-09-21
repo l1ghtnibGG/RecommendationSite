@@ -81,3 +81,10 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\System.Text.Encodings.Web.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\System.Text.Json.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Markdig.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\System.Net.Http.Formatting.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Newtonsoft.Json.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Newtonsoft.Json.Bson.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Westwind.AspNetCore.Markdown.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\YandexDisk.Client.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\RecommendationSite.MvcApplicationPartsAssemblyInfo.cs

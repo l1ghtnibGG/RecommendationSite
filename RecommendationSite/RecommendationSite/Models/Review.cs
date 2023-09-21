@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
+using System.Text.Json.Serialization;
 
 namespace RecommendationSite.Models
 {
@@ -29,16 +30,16 @@ namespace RecommendationSite.Models
         public Guid UserId { get; set; }
         public User User { get; set; }
         
-        
         public List<Score> Scores { get; set; }
 
         public List<Tag> Tags { get; set; } = new();
 
         public List<Comment> Comments { get; set; } = new();
         
+        [JsonConverter(typeof(JsonStringEnumConverter))]
         public enum GroupType 
         {
-            Book,
+            Book = 1,
             Movie,
             Game
         }

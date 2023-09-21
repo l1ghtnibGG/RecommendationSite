@@ -84,3 +84,7 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Deb
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Markdig.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Westwind.AspNetCore.Markdown.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Debug\net6.0\RecommendationSite.MvcApplicationPartsAssemblyInfo.cs
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\YandexDisk.Client.dll

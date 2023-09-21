@@ -12,7 +12,18 @@
 
         public Review Add(Review review)
         {
-            throw new NotImplementedException();
+            _context.Add(review);
+            _context.SaveChanges();
+
+            return review;
+        }
+
+        public Review Edit(Review review)
+        {
+            _context.Reviews.Update(review);
+            _context.SaveChanges();
+
+            return review;
         }
 
         public Review GetItem(Guid id)
@@ -22,7 +33,25 @@
 
         public string Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var review = _context.Reviews.FirstOrDefault(x => x.Id == id);
+            
+            if (review == null)
+                return "Wrong";
+            
+            DeleteImage(review.ImageUrl);
+            
+            _context.Remove(review);
+            _context.SaveChanges();
+
+            return $"Delete {review.Title} successfully";
+        }
+        
+        private void DeleteImage(string imgPath)
+        {
+            var path = imgPath.Insert(0, "wwwroot").Replace('/', '\\');
+
+            var f = new FileInfo(path);
+            f.Delete();
         }
     }
 }

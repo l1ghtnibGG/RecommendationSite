@@ -4,6 +4,8 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.runtimeconfig.json
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\RecommendationSite.pdb
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Markdig.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Net.Http.Formatting.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.Google.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.MicrosoftAccount.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -34,6 +36,8 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Configuration.ConfigurationManager.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Diagnostics.DiagnosticSource.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Drawing.Common.dll
@@ -45,6 +49,8 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Text.Encodings.Web.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Text.Json.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\System.Windows.Extensions.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\Westwind.AspNetCore.Markdown.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\YandexDisk.Client.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\PubTmp\Out\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll

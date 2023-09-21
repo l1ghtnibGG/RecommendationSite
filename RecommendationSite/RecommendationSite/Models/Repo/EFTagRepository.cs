@@ -16,6 +16,11 @@
             throw new NotImplementedException();
         }
 
+        public Tag Edit(Tag item)
+        {
+            throw new NotImplementedException();
+        }
+
         public Tag GetItem(Guid id)
         {
             throw new NotImplementedException();

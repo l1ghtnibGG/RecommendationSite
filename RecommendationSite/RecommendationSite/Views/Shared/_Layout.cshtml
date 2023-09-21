@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-bs-theme="black">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RecommendationSite.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body data-bs-theme="dark">
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-toggler-lg navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -26,9 +26,9 @@
                 <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between g-0">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-white fw-normal" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white fw-normal" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item ml-md-auto"><a href="#" class="btn btn-primary switch">Switch Light/Dark</a></li>
+                        <!--<li class="nav-item ml-md-auto"><a id="themer" href="#" class="btn btn-light switch text-dark">Switch Light/Dark</a></li>-->
                     </ul>
                     <form class="d-flex me-5">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -39,6 +39,7 @@
                     {
                         <div class="nav-item ms-1 mt-2 mt-lg-0">
                             <form method="get" asp-controller="Review" asp-action="AddReview">
+                                <input type="hidden" name="email" value="@User.Claims.Last().Value"/>
                                 <button type="submit" class="btn btn-outline-success nav-link text-white">Add Review</button>
                             </form>
                         </div>

@@ -30,14 +30,23 @@
             return user;
         }
 
+        public User Edit(User item)
+        {
+            throw new NotImplementedException();
+        }
+
         public User GetItem(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public string Delete(Guid Id)
+        public string Delete(Guid id)
         {
-            var user = _context.Users.First(x => x.Id == Id);
+            var user = _context.Users.FirstOrDefault(x => x.Id == id);
+            
+            if (user == null)
+                return "Wrong";
+            
             _context.Remove(user);
             _context.SaveChanges();
 

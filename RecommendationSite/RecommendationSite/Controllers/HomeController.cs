@@ -148,16 +148,22 @@ namespace RecommendationSite.Controllers
         public IActionResult AdminPanel(Guid Id) => View(_userRepository
             .GetValues.Where(x => x.Status == Models.User.StatusType.User));
 
-        public IActionResult Delete(string Id)
+        public IActionResult DeleteUser(string Id)
         {
             try
             {
                 var id = Guid.Parse(Id);
-                _userRepository.Delete(id);
-                return RedirectToAction("AdminPanel", new
+
+                if (_userRepository.Delete(id) != "Wrong")
                 {
-                    Id = User.Claims.First().Value
-                });
+                    return RedirectToAction("AdminPanel", new
+                    {
+                        Id = User.Claims.First().Value
+                    });
+                }
+                
+                return RedirectToAction("Error", new { message = 
+                    "User's id is wrong" });
             }
             catch (FormatException ex)
             {

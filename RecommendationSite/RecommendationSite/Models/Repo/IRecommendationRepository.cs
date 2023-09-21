@@ -9,5 +9,7 @@
         public string Delete(Guid id);
 
         public T Add(T item);
+
+        public T Edit(T item);
     }
 }

@@ -16,8 +16,8 @@
             </div>
             <div class="d-flex flex-row">
                 <a asp-controller="Review" asp-action="ReviewPanel" asp-route-Id="@review.Id.ToString()" class="btn btn-outline-primary me-1 col">View</a>
-                <a asp-controller="Review" asp-action="Edit" asp-route-Id="@review.Id.ToString()" class="btn btn-outline-secondary me-1 col">Edit</a>
-                <a asp-controller="Review" asp-action="Delete" asp-route-Id="@review.Id.ToString()" class="btn btn-outline-danger col">Delete</a>
+                <a asp-controller="Review" asp-action="EditReview" asp-route-Id="@review.Id.ToString()" class="btn btn-outline-secondary me-1 col">Edit</a>
+                <a asp-controller="Review" asp-action="DeleteReview" asp-route-Id="@review.Id.ToString()" class="btn btn-outline-danger col">Delete</a>
             </div>
         </div>
     }

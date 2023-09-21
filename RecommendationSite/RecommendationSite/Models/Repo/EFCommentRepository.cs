@@ -25,4 +25,9 @@ public class EFCommentRepository : IRecommendationRepository<Comment>
     {
         throw new NotImplementedException();
     }
+
+    public Comment Edit(Comment item)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -23,6 +23,14 @@ public class EFScoreRepository : IRecommendationRepository<Score>
 
     public Score Add(Score score)
     {
+        _context.Add(score);
+        _context.SaveChanges();
+
+        return score;
+    }
+
+    public Score Edit(Score item)
+    {
         throw new NotImplementedException();
     }
 }

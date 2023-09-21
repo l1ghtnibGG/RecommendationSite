@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "User";
+    ViewData["Title"] = "Review";
 }
 
 @using Westwind.AspNetCore.Markdown
@@ -7,11 +7,11 @@
 
 <div class="mb-5">
     <div class="d-flex flex-row container g-0">
-        <div class="row m-auto">
+        <div class="row m-auto w-100">
             <div class="col-12 p-4">
-                <div class="col-lg-4 col-md-7 col-sm-7 col-12">
-                    <img src="@Model.Item1.ImageUrl" height="600" class="float-lg-start float-md-start
-                            float-sm-start rounded mb-2 me-sm-3 w-100" alt="@Model.Item1.ImageUrl" />
+                <div class="col-lg-4 col-md-7 col-sm-7 col-12 float-lg-start float-md-start float-sm-start me-sm-3 ">
+                    <img src="@Model.Item1.ImageUrl" height="600"
+                         class="rounded mb-2 w-100" alt="@Model.Item1.ImageUrl" />
                 </div>
                 <h4>@User.Claims.Last().Value</h4>
                 <div class="row-auto m-1">
@@ -51,6 +51,11 @@
                     </div>
                 }
             </div>
+        </div>
+    </div>
+    <div class="row justify-content-center align-content-center m-auto">
+        <div class="row p-3 w-25">
+        <a class="btn btn-outline-success" asp-controller="" asp-action="">Add comment</a>
         </div>
     </div>
 </div>

@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using RecommendationSite.Models;
 using RecommendationSite.Models.Data;
 using RecommendationSite.Models.Repo;
-using Westwind.AspNetCore.Markdown;
 
 namespace RecommendationSite
 {
@@ -57,7 +55,7 @@ namespace RecommendationSite
 
             if (!app.Environment.IsDevelopment())
             {
-                app.UseExceptionHandler("Home/Error");
+                app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
 
