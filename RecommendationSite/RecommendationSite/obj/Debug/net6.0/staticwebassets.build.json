@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YsXeeyueZBGACImPceL1cofyknT2wzVRyoZ644rpMeg=",
+  "Hash": "Xe79Tc2gLkYRF4vSd56bAKNJ1wqRIf48UZ+I3llAWx8=",
   "Source": "RecommendationSite",
   "BasePath": "_content/RecommendationSite",
   "Mode": "Default",
@@ -984,6 +984,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\20230922-20230921-20230921-prepetual.png"
+    },
+    {
+      "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\20230922-20230921-4200522.jpg",
+      "SourceId": "RecommendationSite",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\",
+      "BasePath": "_content/RecommendationSite",
+      "RelativePath": "Images/20230922-20230921-4200522.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\20230922-20230921-4200522.jpg"
     },
     {
       "Identity": "E:\\InternItransition\\CourseProject\\RecommendationSite\\RecommendationSite\\wwwroot\\Images\\20230922-20230921-photo_2023-05-11_12-12-26.jpg",

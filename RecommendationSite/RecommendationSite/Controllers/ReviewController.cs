@@ -130,8 +130,6 @@ public class ReviewController : Controller
 
         if (reviewAddModel.IsAdd == "1")
             AddReviewTags(review);
-        else
-            EditReviewTags(review);
 
         return review;
     }
@@ -148,19 +146,6 @@ public class ReviewController : Controller
             _logger.Log(LogLevel.Critical, ex.Message, this);
         }
     }
-    
-    private void EditReviewTags(Review review)
-    {
-        try
-        {
-            review.Tags.Add(_tagRepository.GetValues.First(x => x.Name == review.Group.ToString() + "s"));
-        }
-        catch (InvalidOperationException ex)
-        {
-            _logger.Log(LogLevel.Critical, ex.Message, this);
-        }
-    }
-
 
     [HttpGet("Review/Edit/{Id}")]
     public IActionResult EditReview(string Id)
@@ -175,7 +160,6 @@ public class ReviewController : Controller
                 Id = review.Id,
                 Title = review.Title,
                 Name = review.Name,
-                Group = review.Group,
                 Mark = review.Mark,
                 Text = review.Text,
                 UserId = review.UserId

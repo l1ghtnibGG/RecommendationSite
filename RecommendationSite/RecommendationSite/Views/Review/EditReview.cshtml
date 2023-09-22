@@ -21,15 +21,6 @@
                         <span asp-validation-for="@Model.Name" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" asp-for="@Model.Group"></label>
-                        <select class="form-select" asp-for="@Model.Group">
-                            <option selected="">Select type of genre</option>
-                            <option value="1">@Review.GroupType.Book.ToString()</option>
-                            <option value="2">@Review.GroupType.Movie.ToString()</option>
-                            <option value="3">@Review.GroupType.Game.ToString()</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
                         <label class="form-label" asp-for="@Model.Mark">Mark</label>
                         <input type="number" asp-for="@Model.Mark" class="form-control" value="@Model.Mark"/>
                         <span asp-validation-for="@Model.Mark" class="text-danger"></span>

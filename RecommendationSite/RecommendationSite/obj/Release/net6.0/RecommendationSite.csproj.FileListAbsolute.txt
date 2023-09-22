@@ -88,3 +88,17 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Rel
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Westwind.AspNetCore.Markdown.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\YandexDisk.Client.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\obj\Release\net6.0\RecommendationSite.MvcApplicationPartsAssemblyInfo.cs
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\EasyData.Core.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\KnowledgePicker.WordCloud.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Korzh.EasyQuery.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Korzh.EasyQuery.Linq.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\SkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\LemmaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\LemmaSharpPrebuilt.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\LemmaSharpPrebuiltCompact.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Lzma#.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\Sparc.TagCloud.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\osx\native\libSkiaSharp.dylib
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Release\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
