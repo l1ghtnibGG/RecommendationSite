@@ -4,7 +4,7 @@
     {
         public IQueryable<T> GetValues { get; }
         
-        public T GetItem(Guid id);
+        public void Save();
 
         public string Delete(Guid id);
 

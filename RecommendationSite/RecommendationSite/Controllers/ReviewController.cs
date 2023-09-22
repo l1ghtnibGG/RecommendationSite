@@ -2,6 +2,7 @@
 using RecommendationSite.Models;
 using RecommendationSite.Models.RegistrationModels;
 using RecommendationSite.Models.Repo;
+using Sparc.TagCloud;
 
 namespace RecommendationSite.Controllers;
 
@@ -12,15 +13,17 @@ public class ReviewController : Controller
     private readonly IRecommendationRepository<Comment> _commentRepository;
     private readonly IRecommendationRepository<User> _userRepository;
     private readonly IRecommendationRepository<Score> _scoreRepository;
+    private readonly IRecommendationRepository<Tag> _tagRepository;
     public ReviewController(ILogger<HomeController> logger, IRecommendationRepository<Review> reviewRepository,
         IRecommendationRepository<Comment> commentRepository, IRecommendationRepository<User> userRepository,
-        IRecommendationRepository<Score> scoreRepository)
+        IRecommendationRepository<Score> scoreRepository, IRecommendationRepository<Tag> tagRepository)
     {
         _logger = logger;
         _reviewRepository = reviewRepository;
         _commentRepository = commentRepository;
         _userRepository = userRepository;
         _scoreRepository = scoreRepository;
+        _tagRepository = tagRepository;
     }
 
     [HttpGet("/Review/{Id}")]
@@ -28,8 +31,12 @@ public class ReviewController : Controller
     {
         var review = SearchReview(Id);
 
-        if (review == null)
+        var reviewUser = _userRepository.GetValues.FirstOrDefault(x => x.Id == review.UserId);
+
+        if (review == null || reviewUser == null)
                 return RedirectToAction("Error", "Home", new {message = "Review not found"});
+        
+        review.User = reviewUser;
 
         var commentUser = 
             (from comment in _commentRepository.GetValues.Where(x => x.ReviewId == review.Id)
@@ -107,8 +114,9 @@ public class ReviewController : Controller
         return View(reviewAddModel);
     }
 
-    private Review CreateReview(ReviewAddModel reviewAddModel) => 
-        new Review
+    private Review CreateReview(ReviewAddModel reviewAddModel)
+    {
+        var review = new Review
         {
             Id = reviewAddModel.Id,
             Title = reviewAddModel.Title,
@@ -119,6 +127,39 @@ public class ReviewController : Controller
             Text = reviewAddModel.Text,
             UserId = reviewAddModel.UserId
         };
+
+        if (reviewAddModel.IsAdd == "1")
+            AddReviewTags(review);
+        else
+            EditReviewTags(review);
+
+        return review;
+    }
+
+    private void AddReviewTags(Review review)
+    {
+        try
+        {
+            review.Tags.Add(_tagRepository.GetValues.First(x => x.Name == "New"));
+            review.Tags.Add(_tagRepository.GetValues.First(x => x.Name == review.Group.ToString() + "s"));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.Log(LogLevel.Critical, ex.Message, this);
+        }
+    }
+    
+    private void EditReviewTags(Review review)
+    {
+        try
+        {
+            review.Tags.Add(_tagRepository.GetValues.First(x => x.Name == review.Group.ToString() + "s"));
+        }
+        catch (InvalidOperationException ex)
+        {
+            _logger.Log(LogLevel.Critical, ex.Message, this);
+        }
+    }
 
 
     [HttpGet("Review/Edit/{Id}")]
@@ -145,7 +186,7 @@ public class ReviewController : Controller
         catch (FormatException ex)
         {
             _logger.Log(LogLevel.Critical, ex.Message);
-            return RedirectToAction("Error", "home", new { message = 
+            return RedirectToAction("Error", "Home", new { message = 
                 "Review's id is wrong" });
         }
         catch (InvalidOperationException ex)
@@ -162,8 +203,8 @@ public class ReviewController : Controller
         {
             var id = Guid.Parse(Id);
             var userId = _reviewRepository.GetValues.First(x => x.Id == id).UserId;
-            
-            if (_reviewRepository.Delete(id) != "Wrong")
+
+            if (DeleteReviewComments(id) && _reviewRepository.Delete(id) != "Wrong")
             {
                 return RedirectToAction("UserPanel", "Home", new
                 {
@@ -186,6 +227,19 @@ public class ReviewController : Controller
             return RedirectToAction("Error", "home", new { message = 
                 "User not found by id" });
         }
+    }
+
+    private bool DeleteReviewComments(Guid reviewId)
+    {
+        var reviewComments = _commentRepository.GetValues.Where(x => x.ReviewId == reviewId).ToList();
+
+        foreach (var comment in reviewComments)
+        {
+            if (_commentRepository.Delete(comment.Id) == "Wrong")
+                return false;
+        }
+
+        return true;
     }
 
     private bool IsReviewValid(ReviewAddModel review)

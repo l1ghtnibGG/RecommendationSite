@@ -23,7 +23,7 @@ public class ReviewAddModel
     
     public short Mark { get; set; }
     
-    public Guid UserId { get; set; }
+    public Guid? UserId { get; set; }
     
     public string IsAdd { get; set; }
 }

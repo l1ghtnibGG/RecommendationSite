@@ -20,17 +20,35 @@
 
         public Review Edit(Review review)
         {
+            EditTags(review);
+            
             _context.Reviews.Update(review);
             _context.SaveChanges();
 
             return review;
         }
 
-        public Review GetItem(Guid id)
+        private void EditTags(Review review)
         {
-            throw new NotImplementedException();
+            try
+            {
+                _context.Reviews.FirstOrDefault(x => x.Id == review.Id).Tags.
+                        FirstOrDefault(x => x.Name == Review.GroupType.Book.ToString() + "s" ||
+                                            x.Name == Review.GroupType.Game.ToString() + "s" ||
+                                            x.Name == Review.GroupType.Movie.ToString() + "s").Name =
+                    review.Tags.FirstOrDefault(x => x.Name == review.Group.ToString() + "s").Name;
+
+                review.Tags.Remove(review.Tags.FirstOrDefault(x => 
+                    x.Name == review.Group.ToString() + "s"));
+            }
+            catch (NullReferenceException ex)
+            {
+                
+            }
         }
 
+        public void Save() => _context.SaveChanges();
+        
         public string Delete(Guid id)
         {
             var review = _context.Reviews.FirstOrDefault(x => x.Id == id);
@@ -39,7 +57,7 @@
                 return "Wrong";
             
             DeleteImage(review.ImageUrl);
-            
+
             _context.Remove(review);
             _context.SaveChanges();
 

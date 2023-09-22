@@ -10,8 +10,8 @@ public class EFScoreRepository : IRecommendationRepository<Score>
     }
 
     public IQueryable<Score> GetValues => _context.Scores;
-    
-    public Score GetItem(Guid id)
+
+    public void Save()
     {
         throw new NotImplementedException();
     }

@@ -1,0 +1,8 @@
+﻿@model Review
+
+<div class="row justify-content-center align-content-center m-auto">
+    <div class="row p-3 w-auto">
+        <a class="btn btn-outline-success px-5" asp-controller="Comment" asp-action="AddComment"
+           asp-route-userEmail="@User.Claims.Last().Value" asp-route-reviewId="@Model.Id.ToString()">Add comment</a>
+    </div>
+</div>

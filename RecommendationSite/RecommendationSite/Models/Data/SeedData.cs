@@ -143,7 +143,19 @@ namespace RecommendationSite.Models.Data
                         "takes the cake as my all-time favorite series.",
                         ImageUrl = "/Images/Naruto.jpg",
                         UserId = Guid.Parse(context.Users.First(x => x.Email == "petya@gmail.com").Id.ToString()),
-                        Mark = 10
+                        Mark = 10,
+                        Tags = new List<Tag>
+                        {
+                            new Tag
+                            {
+                                Name = "Best"
+                            },
+                            
+                            new Tag
+                            {
+                                Name = "Movie"
+                            }
+                        }
                     },
                     new Review
                     {
@@ -183,7 +195,19 @@ namespace RecommendationSite.Models.Data
                         "by order of the Peaky Blinders, go watch the show everybody. Enjoy!",
                         ImageUrl = "/Images/PeakyBlinders.jpg",
                         UserId = Guid.Parse(context.Users.First(x => x.Email == "masha12@mail.ru").Id.ToString()),
-                        Mark = 9
+                        Mark = 9,
+                        Tags = new List<Tag>
+                        {
+                            new Tag
+                            {
+                                Name = "Best"
+                            },
+                            
+                            new Tag
+                            {
+                                Name = "Movie"
+                            }
+                        }
                     },
                     new Review
                     {
@@ -230,6 +254,18 @@ namespace RecommendationSite.Models.Data
                         ImageUrl = "/Images/TheArtOfWar.jpg",
                         UserId = Guid.Parse(context.Users.First(x => x.Email == "petya@gmail.com").Id.ToString()),
                         Mark = 6,
+                        Tags = new List<Tag>
+                        {
+                            new Tag
+                            {
+                                Name = "Worst"
+                            },
+                            
+                            new Tag
+                            {
+                                Name = "Books"
+                            }
+                        }
                     },
                     new Review
                     {
@@ -247,8 +283,21 @@ namespace RecommendationSite.Models.Data
                         " warmed up to the idea of Infinity Ward channelling their old habits for better or worse.",
                         ImageUrl = "/Images/COD.jpg",
                         UserId = Guid.Parse(context.Users.First(x => x.Email == "petya@gmail.com").Id.ToString()),
-                        Mark = 10
+                        Mark = 10,
+                        Tags = new List<Tag>
+                        {
+                            new Tag
+                            {
+                                Name = "Best"
+                            },
+                            
+                            new Tag
+                            {
+                                Name = "Game"
+                            }
+                        }
                     });
+                
                 context.SaveChanges();
             }
 

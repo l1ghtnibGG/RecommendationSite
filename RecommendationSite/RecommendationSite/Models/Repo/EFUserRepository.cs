@@ -35,7 +35,7 @@
             throw new NotImplementedException();
         }
 
-        public User GetItem(Guid id)
+        public void Save()
         {
             throw new NotImplementedException();
         }

@@ -88,3 +88,17 @@ E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Deb
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Newtonsoft.Json.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\YandexDisk.Client.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\KnowledgePicker.WordCloud.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\SkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\runtimes\osx\native\libSkiaSharp.dylib
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\runtimes\win-arm64\native\libSkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\runtimes\win-x64\native\libSkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\runtimes\win-x86\native\libSkiaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\LemmaSharp.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\LemmaSharpPrebuilt.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\LemmaSharpPrebuiltCompact.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Lzma#.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Sparc.TagCloud.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\EasyData.Core.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Korzh.EasyQuery.dll
+E:\InternItransition\CourseProject\RecommendationSite\RecommendationSite\bin\Debug\net6.0\Korzh.EasyQuery.Linq.dll

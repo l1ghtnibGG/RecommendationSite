@@ -21,7 +21,7 @@
             throw new NotImplementedException();
         }
 
-        public Tag GetItem(Guid id)
+        public void Save()
         {
             throw new NotImplementedException();
         }

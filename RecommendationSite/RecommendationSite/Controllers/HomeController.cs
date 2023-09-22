@@ -4,11 +4,11 @@ using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.MicrosoftAccount;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using RecommendationSite.Models;
 using RecommendationSite.Models.Repo;
-using System.Diagnostics;
 using System.Security.Claims;
+using Korzh.EasyQuery.Linq;
+using Sparc.TagCloud;
 
 namespace RecommendationSite.Controllers
 {
@@ -17,20 +17,63 @@ namespace RecommendationSite.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IRecommendationRepository<User> _userRepository;
         private readonly IRecommendationRepository<Review> _reviewRepository;
+        private readonly IRecommendationRepository<Tag> _tagRepository;
 
         public HomeController(ILogger<HomeController> logger, IRecommendationRepository<User> userRepository,
-            IRecommendationRepository<Review> reviewRepository)
+            IRecommendationRepository<Review> reviewRepository, IRecommendationRepository<Tag> tagRepository)
         {
             _logger = logger;
             _userRepository = userRepository;
             _reviewRepository = reviewRepository;
+            _tagRepository = tagRepository;
         }
 
         [HttpGet("")]
         [HttpGet("Home")]
-        public IActionResult Index()
+        public IActionResult Index(string tag)
         {
-            return View(_userRepository.GetValues);
+            IQueryable<Review> reviews;
+
+            if (tag == null)
+                reviews = _reviewRepository.GetValues;
+            else
+                reviews =
+                    from review in _reviewRepository.GetValues
+                    where review.Tags.Any(x => x.Name == tag)
+                    select review;
+
+            return View(new Tuple<IQueryable<Review>, IEnumerable<TagCloudTag>>(reviews, CreateTagCloud()));
+        }
+        
+        [HttpPost("Home")]
+        public IActionResult IndexPost(string reviewSearch)
+        {
+            IQueryable<Review> reviews;
+
+            if (!string.IsNullOrEmpty(reviewSearch))
+                reviews = _reviewRepository.GetValues.FullTextSearchQuery(reviewSearch);
+            else
+                reviews = _reviewRepository.GetValues;
+
+            return View("Index",new Tuple<IQueryable<Review>, IEnumerable<TagCloudTag>>(reviews, CreateTagCloud()));
+        }
+
+        private IEnumerable<TagCloudTag> CreateTagCloud()
+        {
+            var rightName = _tagRepository.GetValues.Select(x => x.Name).ToList();
+            
+            var tags = new TagCloudAnalyzer()
+                .ComputeTagCloud(_tagRepository.GetValues.Select(x => x.Name))
+                .Shuffle();
+
+            var count = 0;
+            foreach (var tag in tags)
+            {
+                tag.Text = rightName[count];
+                count++;
+            }
+
+            return tags;
         }
 
         [HttpGet("Registration")]

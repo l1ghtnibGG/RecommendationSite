@@ -8,8 +8,10 @@
     <link rel="icon" type="image/png" sizes="32x32" href="~/Images/favicon-32x32BR.png">
     <link rel="icon" type="image/png" sizes="16x16" href="~/Images/favicon-16x16BR.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap-tag-cloud.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/RecommendationSite.styles.css" asp-append-version="true" />
+    <link href="~/css/tag_cloud.css" rel="stylesheet" type="text/css" />
 </head>
 <body data-bs-theme="dark">
     <header class="sticky-top">
@@ -24,14 +26,9 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between g-0">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white fw-normal" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <!--<li class="nav-item ml-md-auto"><a id="themer" href="#" class="btn btn-light switch text-dark">Switch Light/Dark</a></li>-->
-                    </ul>
-                    <form class="d-flex me-5">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <ul class="navbar-nav flex-grow-1"></ul>
+                    <form asp-controller="Home" asp-action="IndexPost" class="d-flex me-5">
+                        <input class="form-control me-2" name="reviewSearch" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-beige" type="submit">Search</button>
                     </form>
                     <div class="d-none d-lg-block vr me-1 text-white"></div>
@@ -54,7 +51,8 @@
                     }
                     else
                     {
-                        @await Html.PartialAsync("_PartialLogInNavbar");
+                        @await Html.PartialAsync("_PartialLogInNavbar")
+                        ;
                     }
                 </div>
             </div>
@@ -71,9 +69,10 @@
             &copy; 2023 - Kruglikov Vlad
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap-tag-cloud.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

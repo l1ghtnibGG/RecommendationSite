@@ -4,14 +4,14 @@
 
 @model IQueryable<Review>;
 
-<div class="d-flex flex-wrap justify-content-evenly container-fluid p-1 p-md-3 p-lg-4 g-0">
+<div class="d-flex flex-wrap justify-content-evenly container-fluid m-auto p-0 p-md-3 p-lg-4 g-0">
     @foreach (var review in @Model)
     {
-        <div class="d-flex flex-column justify-content-center align-content-center p-4">
+        <div class="d-flex flex-column justify-content-center align-content-center m-auto p-lg-4 p-md-4 p-sm-4 py-3">
             <h5 class="fw-bolder">@review.Title</h5>
             <div class="row mb-1">
                 <a asp-controller="Review" asp-action="ReviewPanel" asp-route-Id="@review.Id.ToString()">
-                    <img src="@review.ImageUrl" width="300" height="400" class="rounded" alt="@review.ImageUrl"/>
+                    <img src="@review.ImageUrl" width="300" height="400" class="rounded" alt="@review.ImageUrl" />
                 </a>
             </div>
             <div class="d-flex flex-row">
